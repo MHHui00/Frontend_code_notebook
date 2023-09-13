@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //review 匿名函數。！調用後要加分號 ；
+        //將沒名字的函數賦值給變量：函數表達式
+        let fn = function () {
+            console.log("hello")
+        }
+        fn();//必須在聲明後才能調用
+
+
+        //立即執行的匿名函數: ()()
+        (function () { console.log('type 1 called ') })();
+        (function (x) { console.log('type 1 called:' + x ) })(1);
+
+        //寫法二: (函數   ())
+        (function () { console.log('type 2 called ') }    ());
+        (function (x) { console.log('type 2 called:' + x )}    (2));
+
+
+        //Tips ctrl + [ 左縮進， ctrl + ] 右縮進， ctrl + shift + F 自動整理
+
+    </script>
+</body>
+
+</html>

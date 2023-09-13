@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj = {
+            name: 'tim',
+            sex: true,
+            age: 18,
+            //method
+            getInfo: function(){
+                return obj;
+            }
+        }
+        //modify
+        obj.name = 'Adam'
+        console.log(obj.name)
+
+        //add
+        obj.add = 'taipei' //review 對象的操作 給不存在的屬性賦值，就是增加新的屬性
+        console.log(obj.add)
+        console.log(obj['add']) //review 對象的操作 第二種acess屬性的方法
+
+        //delect （少用）
+        delete obj.add
+        console.log(obj.getInfo())
+    </script>
+</body>
+</html>

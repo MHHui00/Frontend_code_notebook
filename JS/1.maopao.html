@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr = [5, 4, 3, 2, 1]
+
+        // for(let i = 0; i<arr.length-1; i++){
+        //     for(let j = 0; j<arr.length-1-i; j++){
+        //         if(arr[j] > arr[j+1]){
+        //             let temp = arr[j]
+        //             arr[j] = arr[j+1]
+        //             arr[j+1] = temp
+        //         }
+
+        //     }
+        // }
+
+        arr.sort() //review 冒泡排序sort()，默認升序
+        console.log(arr)
+
+        //升序
+        arr.sort(function(a, b){
+            return a-b
+        })
+        //降序
+        arr.sort(function(a, b){
+            return b-a
+        })
+        console.log(arr)
+    </script>
+</body>
+</html>

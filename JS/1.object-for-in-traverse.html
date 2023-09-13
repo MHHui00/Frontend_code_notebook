@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj = {
+            name: 'tim',
+            sex: true,
+            age: 18,
+            //method
+            getInfo: function(){
+                return obj;
+            }
+        }
+
+        //review for in 遍歷對象。 通過for in 遍歷到的是！！字符串！！
+        //所以access屬性的方法只能用中括號，而不能用點
+        for (let i in obj){
+            // console.log(i) 
+            console.log(obj[i])
+        }
+    </script>
+</body>
+</html>

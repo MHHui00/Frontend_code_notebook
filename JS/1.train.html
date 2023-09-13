@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h2, table {
+            text-align: center;
+        }
+        table, tr, td, th {
+            border: 1px solid #000;
+
+        }
+        table {
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+        td, th {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>title</h2>
+    <!-- <table>
+        <tr>
+            <th>name</th>
+            <th>No.</th>
+            <th>add</th>
+        </tr>
+        <tr>
+            <td class="Name"></td>
+            <td class="No"></td>
+            <td class="Add"></td>
+        </tr>
+    </table> -->
+
+    <script>
+        let Name = prompt("input name")
+        let No = +prompt("input No.") //review + 輸入類型轉換為數字 
+        let Add = prompt("input add")
+        // document.querySelector(".Name").innerHTML = Name
+        // document.querySelector(".No").innerHTML = No
+        // document.querySelector(".Add").innerHTML = Add
+        
+
+        document.write(`
+        <table>
+            <tr>
+                <th>name</th>
+                <th>No.</th>
+                <th>add</th>
+            </tr>
+            <tr>
+                <td class="Name">${Name}</td>
+                <td class="No">${No}</td>
+                <td class="Add"${Add}></td>
+            </tr>
+        </table>
+        `)
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- #abc>div.cba+ul.qwe>li*5>a{iterm$} -->
+    <div id="abc">
+        <div class="cba"></div>
+        <ul class="qwe">
+            <li><a href="">iterm2</a></li>
+            <li><a href="">iterm3</a></li>
+            <li><a href="">iterm1</a></li>
+            <li><a href="">iterm4</a></li>
+            <li><a href="">iterm5</a></li>
+        </ul>
+    </div>
+
+    <script>
+        let arr = [1,2,3,4]
+
+        // add
+        console.log(arr.push(5, 6)) // push() 末尾加入元素同時回傳陣列長度
+        console.log(arr)
+
+        
+        console.log(arr.unshift(0)) // unshift() 開頭加入元素同時回傳陣列長度
+        console.log(arr)
+        
+
+        // delect
+        console.log('end delected ' + arr.pop()) // pop() 移除最後一個元素同時回傳該元素
+        console.log(arr)
+
+        console.log('begin delected ' + arr.shift()) // shift() 移除第一個元素同時回傳該元素
+        console.log(arr)
+
+        //delect by index
+        console.log('delected 1 iterm from index 2 :', arr.splice(2,1)) // splice(起始位置, 刪除個數) 移除指定位置的元素同時回傳該元素
+        console.log(arr)
+
+        console.log('delected all iterm start with index 2 :', arr.splice(2)) // splice
+        console.log(arr)
+        //review 數組的增刪改查
+
+        console.log(10&&20)  //review 返回最後一個為真的值
+        console.log(10||20) //返回第一個為真的值
+
+    </script>
+</body>
+</html>
