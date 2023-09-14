@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" onclick="draw()">draw</button>
+    <script>
+        //review Math庫
+
+        
+        console.log(Math.random())
+
+        //ceil 向上取整(往大的方向取整)
+        console.log("1.000001 = " + Math.ceil(1.000001))    //2
+        console.log("-1.000001 = " + Math.ceil(-1.000001))  //-1
+        
+        //floor 向下取整（往小的方向取整）
+        console.log("1.999999 = "+ Math.floor(1.999999))    //1
+        console.log("-1.999999 = "+ Math.floor(-1.999999))  //-2
+
+        //round 四舍五入
+        console.log("1.5 = "+ Math.round(1.5)) //2
+        console.log("1.4 = "+ Math.round(1.4))  //1
+
+        //max
+        console.log(Math.max(1,23,4,5,6,78,9))
+
+        //min
+        console.log(Math.min(1,23,4,5,6,78,9))
+
+        //0~10
+        console.log(Math.random()*10)
+        console.log(Math.floor(Math.random()*(10+1)))
+
+        //求n~m的随机数
+        function random(n,m){
+            return Math.floor(Math.random()*(m-n+1)+n)
+        }
+        console.log(random(10,20))
+
+
+        //随机获取数组中的元素
+        let arr = ["qwe", 'asd', 'zxc', 'rty', 'fgh', 'vbn']
+        // let randNum = random(0, arr.length-1)
+        // console.log(arr.splice(randNum, 1))
+        // console.log(arr)
+        function draw(){
+            let randNum = random(0, arr.length-1)
+            console.log(arr.splice(randNum, 1))
+            console.log(arr)
+        }
+    </script>
+</body>
+</html>

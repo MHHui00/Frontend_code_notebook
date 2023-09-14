@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h2, table {
+            text-align: center;
+        }
+        table, tr, td, th {
+            border: 1px solid #000;
+
+        }
+        table {
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+        td, th {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>title</h2>
+    <table>
+        <tr>
+            <th>name</th>
+            <th>No.</th>
+            <th>add</th>
+        </tr>
+        <!-- <tr>
+            <td class="Name"></td>
+            <td class="No"></td>
+            <td class="Add"></td>
+        </tr> -->
+        
+        <script>
+            let obj = [
+                {name: 'tim', age: 18, sex: 1},
+                {name: 'ken', age: 20, sex: 0},
+                {name: 'ben', age: 10, sex: 1},
+                {name: 'joy', age: 20, sex: 0}
+            ]
+            for(let i = 0; i < obj.length; i++){
+                document.write(`
+                <tr>
+                    <td>${obj[i].name}</td>
+                    <td>${obj[i].age}</td>
+                    <td>${obj[i].sex}</td>
+                </tr>
+                `)
+                }
+        </script>
+    </table>
+</body>
+</html>

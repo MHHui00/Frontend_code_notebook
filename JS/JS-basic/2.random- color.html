@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body>
+    <button type="button" onclick="draw()">change a random color</button>
+    <div style="width: 100px; height: 100px; background-color: #000; "></div>
+    <script>
+        function randomFormNtoM(n,m){
+            return Math.floor(Math.random()*(m-n+1)+n)
+        }
+        function draw(){
+            let arr = [0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F']
+            let str = '#'
+            for(let i = 0; i< 6; i++){
+                let k = randomFormNtoM(0, 16)
+                str += arr[k]
+            }
+            document.querySelector('div').style.backgroundColor = str
+            // switch(randNum){
+            //     case 10: randNum = 'A'; break;
+            //     case 11: randNum = 'B'; break;
+            //     case 12: randNum = 'C'; break;
+            //     case 13: randNum = 'D'; break;
+            //     case 14: randNum = 'E'; break;
+            //     case 15: randNum = 'F'; break;
+            // }
+        }
+        
+    </script>
+</body>
+</html>
