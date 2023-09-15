@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: #000;
+        }
+        .modifyBox {
+            width: 100px;
+            height: 100px;
+            background-color: pink ;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="abc">
+    </div>
+    <script>
+        //review 修改class 的方法
+
+        //className
+        //1.逐個修改style 屬性
+        let div = document.querySelector('div')
+        // div.style.backgroundColor = 'gray'
+            //review 修改style的屬性時，出現存在 ‘-’ 的屬性要改成駝峰式命名法。例如：background-color 改成 backgroundColor
+        
+        //2.直接賦予另一個class，一次性修改多個屬性
+        div.className = 'modifyBox1'
+
+
+
+        //classList
+        //3.添加類
+        // div.className += ' modifyBox'
+        div.classList.add('modifyBox2')
+
+        //4.刪除類
+        div.classList.remove('modifyBox1')
+
+        //5.切換類
+        div.classList.toggle('modifyBox2') //toggle 有就刪除，沒有就添加!!!
+
+    </script>
+</body>
+</html>

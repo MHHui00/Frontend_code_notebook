@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    //review 標籤自定義屬性， 以 "data-“ 開頭. div.dataset 是对象，存放所有自定義屬性
+    <div data-id = "1" data-any = "qwe"></div>
+    <div data-id = "2"></div>
+    <div data-id = "3"></div>
+    <div data-id = "4"></div>
+    <div data-id = "5"></div>
+
+    <script>
+        const custom = document.querySelector('div')
+        console.log(custom.dataset) //dataset 是一個對象，裏面存放所有自定義屬性
+        console.log(custom.dataset.id)
+        console.log(custom.dataset.any)
+     </script>
+</body>
+</html>
