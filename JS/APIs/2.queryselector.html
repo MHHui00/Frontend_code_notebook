@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+
+    <ul class="nav">
+        <li>one</li>
+        <li>two</li>
+        <li id="king">three</li>
+    </ul>
+    <script>
+        //review querySelector and getElementById
+        // querySelector 只會選擇第一個符合的元素
+        const a = document.querySelector('p')   //（）裏面是字符串，用‘’或“”。填寫css選擇器
+        console.log(a)
+        const b = document.querySelector('.nav')    //選擇class
+        console.log(b)
+
+        const k = document.querySelector('#king')    //選擇id
+        console.log(k.innerHTML)
+
+
+        // querySelectorAll 會選擇所有符合的元素
+        const c = document.querySelectorAll('.nav li')
+        // console.log(c)   //得到的C是偽術組，沒有pop等方法，有length和index
+        for(let i = 0; i < c.length; i++){
+            console.log(c[i].innerHTML)
+            c[i].style.color = 'red'
+        }
+
+
+
+        // getElementById
+        const d = document.getElementById('king')
+        console.log(d.innerHTML)
+    </script>
+</body>
+</html>
