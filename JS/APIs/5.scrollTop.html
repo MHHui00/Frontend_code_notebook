@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 2000px;
+            padding-top: 200px;
+            padding-left: 100px;
+        }
+
+        div {
+            width: 100px;
+            height: 500px;
+            overflow: scroll;
+            border: solid 1px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div>qwe
+        qwe
+        qwe
+        qwe
+        qwe
+        qwe
+        qwe
+        qwe
+        qwe
+        qwe
+        qwe
+        qwe
+        qwe
+        qwe
+    </div>
+    <script>
+        //review scroll
+        //document.documentElement = html標籤
+        //scrollTop = 畫面上方已經滾走的區域的高度。數字，無單位，可以讀寫。
+
+        document.documentElement.scrollTop = 1100    //設定打開網頁時的初始位置
+
+        const div = document.querySelector('div')
+        window.addEventListener('scroll', function () {       //滾動事件
+            // console.log(document.documentElement.scrollTop)
+            if (document.documentElement.scrollTop >= 100) {
+                div.style.display = 'block'
+            } else {
+                div.style.display = 'none'
+
+            }
+        })
+    </script>
+</body>
+
+</html>

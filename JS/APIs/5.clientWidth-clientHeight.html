@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: gray;
+            padding: 20px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        //測量盒子大小
+        let wid = document.querySelector('div').clientWidth
+        let hei = document.querySelector('div').clientHeight
+        console.log(wid)    //20+200+20
+        console.log(hei)    //20+200+20，不包含border
+    </script>
+</body>
+</html>

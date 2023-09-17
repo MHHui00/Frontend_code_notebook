@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .fa {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        .son {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="fa">
+        <div class="son"></div>
+    </div>
+    <script>
+        // review **冒泡的定義：子元素觸發事件後 會依次觸發(如果有) 父元素的 (同名)同類型事件 eg‘click’事件。 捕獲：則從父到子
+        // review addEventListener默認第三個默認為 false，即關閉捕獲機制，即冒泡。('click',funt (){}, false) 
+        const fa = document.querySelector('.fa')
+        const son = document.querySelector('.son')
+
+
+        // 父子拥有同类型click事件！
+        //1. 冒泡 click son will activate son then fa，从子到父
+        fa.addEventListener('click', function(){
+            console.log('fa')
+        })
+        son.addEventListener('click', function(){
+            console.log('son')
+        })
+
+
+        // //2. 捕获 click son will activate fa, then son，从父到子
+        // fa.addEventListener('click', function(){
+        //     console.log('fa')
+        // },true)                                          //true, 打开捕获
+        // son.addEventListener('click', function(){
+        //     console.log('son')
+        // },true)
+
+
+        // //3. 冒泡阻止 click son will only activate son then stop
+        // fa.addEventListener('click', function(){
+        //     console.log('fa')
+        // })
+        // son.addEventListener('click', function(e){       //添加事件对象名称
+        //     console.log('son')
+        //     e.stopPropagation()                         //阻止继续冒泡
+        // })
+
+    </script>
+    
+</body>
+</html>

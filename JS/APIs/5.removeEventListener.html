@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>qweasd</button>
+    <script>
+        // review removeEventListener()格式
+        const btn = document.querySelector('button')
+        function fn (){
+            // console.log('called')
+            alert('called')
+        }   
+        btn.addEventListener('click', fn)           //
+        btn.addEventListener('click', function(){   //事件是匿名函数，无法删除事件监听
+            console.log('entered')
+        })
+        //removeEventListener('事件', 函数名 )
+        btn.removeEventListener('click', fn)        
+        //通过函数名删除监听
+    </script>
+</body>
+</html>

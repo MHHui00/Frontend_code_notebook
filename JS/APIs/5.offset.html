@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 2000px;
+        }
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: gray;
+            padding: 20px;
+            border: 2px solid red;
+            
+            position: relative;
+            margin: 100px;
+        }
+        p {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+            
+            margin: 0px 50px;
+            position: absolute;
+        }
+        .nav {
+            width: 300px;
+            height: 100px;
+            display: none;
+
+
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <p></p>
+    </div>
+    <p class="nav">I am nevigator bar</p>
+    <script>
+        //review offsetTop和Left长度以什么为准？ 实现效果
+        //測量盒子大小
+        let wid = document.querySelector('div').offsetWidth
+        let hei = document.querySelector('div').offsetHeight
+        console.log(wid)    //2+20+200+20+2 = 244
+        console.log(hei)    //2+20+200+20+2 = 244 (包含border)
+
+        //測量目前盒子到上一個有定位的父級 （position： relative）
+        let topDistance = document.querySelector('div').offsetTop
+        console.log(topDistance)    //上margin 100p
+        let leftDistance = document.querySelector('div').offsetLeft
+        console.log(leftDistance)   //左margin 100px + body自带 8px margin = 108
+
+
+        let pTop = document.querySelector('p').offsetTop
+        console.log(pTop)   //margin 20
+        let pLeft = document.querySelector('p').offsetLeft
+        console.log(pLeft)  //margin 50 + div padding 20 = 70
+
+
+        //**利用offsetTop，触发导航栏悬停/侧边快速导航栏
+        window.addEventListener('scroll', function(){
+            if(document.documentElement.scrollTop >= topDistance){
+                document.querySelector('.nav').style.display = 'block'
+            }else {
+                document.querySelector('.nav').style.display = 'none'
+
+            }
+        })
+
+    </script>
+</body>
+</html>

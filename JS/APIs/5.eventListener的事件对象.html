@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" >
+
+    <script>
+         //review  事件对象(事件监听) function(对象名)}{}，而不是形参。 event.key = 按下的键
+        //review trim()
+        const qwe = document.querySelector('input')
+        qwe.addEventListener('keyup', function(event){
+            // console.log(event)
+            if (event.key == 'Enter'){         
+                console.log('pressed enter')
+                if(qwe.value.trim()){               //若输入不为空。trim() = 去除字符串!头尾！的空格。
+                    console.log(qwe.value.trim())     //输出除去 头尾空格 的内容
+                }
+                qwe.value = ''
+            }
+        })
+    </script>
+</body>
+</html>
