@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            position: relative;
+            width: 400px;
+            height: 200px;
+            background-color: pink;
+
+            text-align: center;
+            line-height: 199px
+            
+        }
+        .x {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            width: 20px;
+            height: 20px;
+            background-color: wheat;
+
+            text-align: center;
+            line-height: 20px;
+
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button>click to wake a alert</button>
+
+    <div class="box">
+        advertisment
+        <div class="x">x</div>
+    </div>
+    <script>
+        const btn = document.querySelector('button')
+        btn.addEventListener('click', function(){
+            alert("Hi")
+        })
+
+        const cross = document.querySelector('.box .x')
+        const box = document.querySelector('.box')
+        cross.addEventListener('click',function(){
+            box.style.display = 'none'
+        })
+    </script>
+</body>
+</html>

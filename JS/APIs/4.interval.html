@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // setInterval(
+        //     function(){console.log('called')}, 
+        //     1000
+        // )
+
+        function fn (){console.log('called fn')}
+        // setInterval(fn, 1000) //review setInterval 格式: 函數名稱不加括號 + 時間 （ms）
+
+        //或者 
+        let n = setInterval('fn()', 1000)
+        console.log(n)
+
+        clearInterval(n)    //stop the interval
+    </script>
+</body>
+</html>

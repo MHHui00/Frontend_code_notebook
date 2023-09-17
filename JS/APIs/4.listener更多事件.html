@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+
+    <input type="text" class="inp">
+
+    <script>
+        const box = document.querySelector('.box')
+        box.addEventListener('mouseenter', function(){
+            box.style.backgroundColor = 'wheat'
+            box.style.width = '120px'
+            box.style.height = '120px'
+        })
+        box.addEventListener('mouseleave', function(){
+            box.style.backgroundColor = 'red'
+            box.style.width = '100px'
+            box.style.height = '100px'
+        })
+
+        const inp = document.querySelector('.inp')
+        inp.addEventListener('focus', function(){
+            console.log('! clicked input bar')
+        })
+        inp.addEventListener('blur', function(){
+            console.log('! left input bar')
+        })
+
+        // inp.addEventListener('keydown', function(){
+        //     console.log('pressed')
+        // })
+        // inp.addEventListener('keyup', function(){
+        //     console.log('released')
+        // })
+
+        inp.addEventListener('input', function(){
+            console.log(inp.value)
+        })
+
+        
+
+    </script>
+</body>
+</html>

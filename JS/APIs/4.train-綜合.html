@@ -35,6 +35,7 @@
             /* display: inline-block; */
             float: left;
             padding: 0px 10px;
+            color: black;
             /* background-color: pink; */
             
         }
@@ -51,9 +52,9 @@
             <img src="image/test1.png" alt="">
         </div>
         <div class="index">
-            <p>qweasd</p>
+            <p>test1</p>
             <ul>
-                    <li></li>
+                    <li class="active"></li>
                     <li></li>
                     <li></li>
             </ul>
@@ -65,18 +66,45 @@
             {url: 'image/test2.png', title: 'test2'},
             {url: 'image/test3.png', title: 'test3'},
         ]
-        const ranNum = parseInt(Math.random()* data.length) //review 使用parseInt()，實現Math.floor()的功能
 
-        const img = document.querySelector('.image img')
-        // console.log(img)
-        img.src = data[ranNum].url
 
-        const text = document.querySelector(' .index p')
-        text.innerHTML = data[ranNum].title
+        let i = 0
+        // let n = setInterval(
+        //     function(){
+        //         i++
+        //         document.querySelector('.image img').src = data[i].url
+        //         document.querySelector(' .index p').innerHTML = data[i].title
+                
+        //         document.querySelector('.index .active').classList.remove('active')
+        //         document.querySelector(`.index li:nth-child(${i + 1 })`).classList.add('active')
 
-        const li = document.querySelector(`.index li:nth-child(${ranNum + 1})`) //review 在queryStr裡面使用JS变量需要用！模版字符串！
-        // console.log(li)
-        li.classList.add('active')
+                
+        //         if (i == data.length - 1 ){
+        //             // clearInterval(n)
+        //             i = -1
+        //         }
+        //     },
+        //     500
+        // )
+        
+        //或者
+        let n = setInterval(
+            function(){
+                i++
+                if (i == data.length){
+                    i = 0
+                }
+                document.querySelector('.image img').src = data[i].url
+                document.querySelector(' .index p').innerHTML = data[i].title
+                
+                document.querySelector('.index .active').classList.remove('active')
+                document.querySelector(`.index li:nth-child(${i + 1 })`).classList.add('active')
+
+                
+                
+            },
+            500
+        )
 
 
     </script>

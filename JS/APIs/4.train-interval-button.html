@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="btn" disabled = true>(5)s left to click</button>
+
+    <script>
+        const btn = document.querySelector(' .btn')
+        let i = 5
+        let n = setInterval(
+            function(){
+                i--
+                btn.innerHTML = `(${i})s left to click`
+                if (i == 0){
+                    clearInterval(n)
+                    btn.disabled = false
+                    btn.innerHTML = 'click me'
+                }
+            },
+            1000
+            ) 
+    </script>
+</body>
+</html>
