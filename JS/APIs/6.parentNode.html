@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            margin: 10px;
+        }
+        .fa {
+            width: 200px;
+            height: 200px;
+            background-color: gray;
+
+            text-align: center;
+
+            position: relative;
+        }
+        .son {
+            width: 20px;
+            height: 20px;
+            background-color: white;
+
+            position: absolute;
+            top: 10px;
+            right: 10px;
+
+            text-align: center;
+
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="fk">
+        <div class="fa">
+            father1
+            <div class="son">x1</div>
+        </div>
+        <div class="fa">
+            father2
+            <div class="son">x2</div>
+        </div>
+        <div class="fa">
+            father3
+            <div class="son">x3</div>
+        </div>
+        <div class="fa">
+            father4
+            <div class="son">x4</div>
+        </div>
+    </div>
+    <script>
+        // review .parentNode .children
+        // console.log(document.querySelector('.son').parentNode)  //找父親
+
+        // console.log(document.querySelector('.fa').children)     //找兒子，得到偽數組
+
+        console.log(document.querySelector('.fa').nextElementSibling.innerHTML)     
+        console.log(document.querySelector('.fa:nth-child(2)').previousElementSibling.innerHTML)
+
+
+
+        //實例
+        //點擊x時，刪除父元素
+        const cross = document.querySelectorAll('.son')
+        for (let i = 0; i < cross.length; i++){
+            cross[i].addEventListener('click', function(){
+                cross[i].parentNode.style.display = 'none'
+            })
+        }
+    </script>
+</body>
+</html>

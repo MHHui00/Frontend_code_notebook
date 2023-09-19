@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p></p>
+    <script>
+        //1
+        const now = new Date()
+        console.log(now.getTime())
+
+        //2 common use
+        console.log(+new Date())
+
+        //3
+        console.log(Date.now())
+        
+
+        //const
+        const pr = new Date('2024-1-17 00:00:00')
+        // const pr = new Date('2023-9-19 00:00:00')
+        // console.log(+pr)
+        let left = (+pr - (+new Date()))/1000
+        // console.log(left)
+        let d = parseInt(left/60/60/24)
+        let h = parseInt(left/60/60%24)
+        let m = parseInt(left/60%60)
+        let s = parseInt(left%60)
+
+        console.log(d,h,m,s)
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <script>
+        //review clone： 元素.cloneNode（false）。默認false：只拷貝html標籤，不包含內容。true：包含內容。深克隆
+        const ul = document.querySelector('ul')
+
+        // 1.
+        // const li1 = document.querySelector('ul li:nth-child(2)').cloneNode(true)
+        // ul.appendChild(li1)
+
+        //或者 2.
+        ul.appendChild(ul.children[1].cloneNode(true))
+
+
+        //review removeChild:  父元素.removeChild(要刪除的子元素)
+        ul.removeChild(ul.children[2])
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>qweasd</li>
+    </ul>
+    <script>
+        //review createElement: document.createElement('')
+        const ul = document.querySelector('ul')
+        const li1 = document.createElement('li')
+        const li2 = document.createElement('li')    //创建新的html标签
+        li1.innerHTML = 'inserted iterm1'
+        li2.innerHTML = 'inserted iterm2'
+        //review appendChild:  父元素.appendChild()
+        ul.appendChild(li1)  //作为父元素的最后一个子元素
+
+        // console.log(ul.children[1])  //返回子元素的伪数组
+        // review insertBefore( 加什么元素 , 加到哪个元素的前面 )
+        ul.insertBefore(li2, ul.children[0])
+    </script>
+</body>
+</html>
