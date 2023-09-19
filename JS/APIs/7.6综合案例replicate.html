@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border: 1px solid black;
+            border-collapse: collapse;
+            margin: 25px auto;
+        }
+
+        td {
+            width: 50px;
+            height: 40px;
+            border: 1px solid black;
+
+            text-align: center;
+            line-height: 40px;
+        }
+
+        tbody a {
+            text-decoration: none;
+            color: red;
+        }
+
+        thead td {
+            background-color: skyblue;
+        }
+
+        h2 {
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h2>add iterm</h2>
+    <form class="info" autocomplete="off">
+        Name:
+        <input type=text class="Uname">
+        Age:
+        <input type="text" class="Age">
+        Gender:
+        <select name="sex" class="Sex" id="">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        Location:
+        <select name="city" class="City" id="">
+            <option value="Calgary">Calgary</option>
+            <option value="Vancouver">Vancouver</option>
+            <option value="Toronto">Toronto</option>
+            <option value="Montreal">Montreal</option>
+        </select>
+        <button class="Add">Submit</button>
+    </form>
+    <h2>info</h2>
+    <table>
+        <thead>
+            <tr>
+                <td>name</td>
+                <td>age</td>
+                <td>sex</td>
+                <td>location</td>
+                <td>Operation</td>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        const form = document.querySelector('form')
+        const Uname = document.querySelector('.Uname')
+        const Age = document.querySelector('.Age')
+        const Sex = document.querySelector('.Sex')
+        const City = document.querySelector('.City')
+        const arr = []
+
+        form.addEventListener('submit',function(e){
+            e.preventDefault()
+            const obj = {
+                Uname: Uname.value,
+                Age: Age.value,
+                Sex: Sex.value,
+                City: City.value
+            }
+            arr.push(obj)
+            this.reset()
+            // console.log(arr)
+            render()
+        })
+
+        function render (){
+            const tbody = document.querySelector('tbody')
+            tbody.innerHTML = ''
+            for(let i = 0;i < arr.length; i++){
+                const tr = document.createElement('tr')
+                tr.innerHTML = `
+                <tr>
+                    <td>${arr[i].Uname}</td>
+                    <td>${arr[i].Age}</td>
+                    <td>${arr[i].Sex}</td>
+                    <td>${arr[i].City}</td>
+                    <td><a href="javascript:" class="delete" data-index="${i}">Delete</a></td>
+                </tr>
+                `
+                tbody.appendChild(tr)
+            }
+        }
+
+        const tbody = document.querySelector('tbody')
+        tbody.addEventListener('click', function(e){
+            if (e.target.tagName == 'A'){
+                // console.log(e.target.dataset.index)
+                arr.splice(e.target.dataset.index, 1)
+                // console.log(arr)
+                render()
+            }
+        })
+
+    </script>
+</body>
+
+</html>
