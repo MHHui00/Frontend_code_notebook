@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //增
+        localStorage.setItem("Uid", 2020055585)
+        localStorage.setItem("Uname", "MHHui")
+        localStorage.setItem("test", "qwe")
+
+        //改
+        localStorage.setItem("test", "231231231")   //直接重賦值
+
+        //查
+        console.log(localStorage.getItem("Uid"));   //review  雖然uid錄入的是數字類型，但是localstorage永遠只能保存字符串類型
+
+        //刪
+        // localStorage.removeItem('test')
+    </script>
+</body>
+</html>

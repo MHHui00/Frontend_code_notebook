@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            margin: 10px;
+        }
+        .fa {
+            width: 200px;
+            height: 200px;
+            background-color: gray;
+
+            text-align: center;
+
+            position: relative;
+        }
+        .son {
+            width: 20px;
+            height: 20px;
+            background-color: white;
+
+            position: absolute;
+            top: 10px;
+            right: 10px;
+
+            text-align: center;
+
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="fk">
+        <div class="fa">
+            3秒后自动关闭並跳轉百度
+            <div class="son">x</div>
+        </div>
+    </div>
+    <script>
+        //實例
+        //點擊x時，刪除父元素
+        const cross = document.querySelector('.son')
+        cross.addEventListener('click', function(){
+            cross.parentNode.style.display = 'none'
+        })
+
+        let timer = setTimeout(function(){
+            cross.click()
+            // window.location.href = 'https://baidu.com'
+        }, 3000)
+
+        //關閉計時器
+        // clearTimeout(timer)
+
+
+    </script>
+</body>
+</html>

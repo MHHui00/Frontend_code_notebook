@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        const arr = ['qwe', 'asd', 'zxc']
+        const newarr = arr.map(function(ele, index){
+            return(ele + '@')
+        })
+        console.log(newarr);
+        let str = newarr.join('')   //qwe@asd@zxc@
+        str = newarr.join('|')   //qwe@|asd@|zxc@
+        str = newarr.join(' ')   //qwe@ asd@ zxc@
+        console.log(str);
+
+    </script>
+</body>
+</html>

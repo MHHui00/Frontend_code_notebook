@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const str = 'this is a example sentence, Sep 20 2023 Web'
+        const reg = /2023/
+
+        console.log(reg.test(str))
+        // console.log(reg.exec(str))  //返回一個數組，數組中index=35 代表 ‘2023’在str的第35 + 1 = 36位
+        if (/qwe/.exec('qweasd')) {
+            console.log(true)
+        } else { console.log(false) }
+
+        //review reg.邊界符
+        //^啊  啊開頭
+        console.log('-------^---------')
+        console.log(/^a/.test('ba'))    //f
+        console.log(/^a/.test('ab'))    //t
+        //啊$  啊結尾
+        console.log('-------$---------')
+        console.log(/a$/.test('bbbbbba'))    //t
+        console.log(/a$/.test('aaaaab'))    //f
+
+        //^啊$  同時使用代表精確匹配，（只有一個‘啊’且是開和結尾）所以只有‘啊’是true
+        console.log('-------^ $---------')
+        console.log(/^a$/.test('abbbbba'))  //f   
+        console.log(/^a$/.test('aa'))       //f   
+        console.log(/^a$/.test('a'))        //t   
+
+        //review reg.量詞
+        //啊*: 啊 >= 0 次
+        console.log('-------**---------')
+        console.log(/^a$/.test('a'))        //t   
+
+        console.log(/^a*$/.test(''))        //t   
+        console.log(/^a*$/.test('a'))       //t   
+        console.log(/^a*$/.test('aa'))      //t   
+        console.log(/^a*$/.test('bbab'))    //f
+        console.log(/^a*$/.test('abb'))     //f   
+        console.log(/^a*$/.test('aba'))     //f   
+
+        //啊+: 啊 >= 1 次
+        console.log('-------++---------')
+        console.log(/^a$/.test('a'))        //t   
+
+        console.log(/^a+$/.test(''))        //f   
+        console.log(/^a+$/.test('a'))       //t   
+        console.log(/^a+$/.test('aa'))      //t   
+        console.log(/^a+$/.test('bbab'))    //f   
+        console.log(/^a+$/.test('abb'))     //f   
+        console.log(/^a+$/.test('aba'))     //f  
+
+        //啊?: 啊 = 1 次 || 啊 = 0 次
+        console.log('-------??---------')
+        console.log(/^a$/.test('a'))        //t   
+
+        console.log(/^a?$/.test(''))        //t   
+        console.log(/^a?$/.test('a'))       //t   
+        console.log(/^a?$/.test('aa'))      //f   
+        console.log(/^a?$/.test('bbab'))    //f   
+        console.log(/^a?$/.test('abb'))     //f   
+        console.log(/^a?$/.test('aba'))     //f  
+
+        //啊{n}  ’啊‘必須只出現n次
+        console.log('-------{n}---------')
+        console.log(/^a{3}$/.test('a'))
+        console.log(/^a{3}$/.test('aa'))
+        console.log(/^a{3}$/.test('aaa'))   //t
+        console.log(/^a{3}$/.test('aaaa'))
+        console.log(/^a{3}$/.test('aaaaa'))
+
+        //啊{n,}  '啊' 至少出現n次  啊 >=n
+        console.log('-------{n,}---------')
+        console.log(/^a{3,}$/.test('a'))
+        console.log(/^a{3,}$/.test('aa'))
+        console.log(/^a{3,}$/.test('aaa'))      //t
+        console.log(/^a{3,}$/.test('aaaa'))     //t
+        console.log(/^a{3,}$/.test('aaaaa'))    //t
+
+        //啊{n,m} ‘啊’ >=n &&  '啊'<=m
+        console.log('-------{n,m}---------')
+        console.log(/^a{3,5}$/.test('a'))
+        console.log(/^a{3,5}$/.test('aa'))
+        console.log(/^a{3,5}$/.test('aaa'))     //t
+        console.log(/^a{3,5}$/.test('aaaa'))    //t
+        console.log(/^a{3,5}$/.test('aaaaa'))   //t
+        console.log(/^a{3,5}$/.test('aaaaaa'))
+    </script>
+</body>
+
+</html>

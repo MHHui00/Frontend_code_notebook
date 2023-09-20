@@ -67,64 +67,96 @@
                 <td>sex</td>
                 <td>location</td>
                 <td>Operation</td>
-                
             </tr>
         </thead>
         <tbody>
-            <tr>
-            </tr>
         </tbody>
     </table>
 
     <script>
+        const data = [
+            // {
+            //     Uname: "xwx",
+            //     Uage: "22",
+            //     Sex: "Male",
+            //     Ulocation: "Calgary",
+            // },
+            // {
+            //     Uname: "qwe",
+            //     Uage: "21",
+            //     Sex: "Male",
+            //     Ulocation: "Calgary",
+            // },
+            // {
+            //     Uname: "asd",
+            //     Uage: "20",
+            //     Sex: "Male",
+            //     Ulocation: "Calgary",
+            // }
+        ]
+        // localStorage.setItem('data', JSON.stringify(data))
+
         const form = document.querySelector('form')
+        const tbody = document.querySelector('tbody')
         const Uname = document.querySelector('.Uname')
         const Age = document.querySelector('.Age')
         const Sex = document.querySelector('.Sex')
         const City = document.querySelector('.City')
-        const arr = []
 
-        form.addEventListener('submit',function(e){
+        const arr = JSON.parse(localStorage.getItem('data')) || []
+
+        form.addEventListener('submit', function (e) {
             e.preventDefault()
-            const obj = {
-                Uname: Uname.value,
-                Age: Age.value,
-                Sex: Sex.value,
-                City: City.value
+            if(!Uname.value||!Age.value){
+                alert('Plaese complete the form')
+                return
             }
-            arr.push(obj)
+            arr.push({
+                Uname: Uname.value,
+                Uage: Age.value,
+                Sex: Sex.value,
+                Ulocation: City.value,
+            })
             this.reset()
-            // console.log(arr)
+            localStorage.setItem('data', JSON.stringify(arr))
             render()
         })
 
-        function render (){
-            const tbody = document.querySelector('tbody')
-            tbody.innerHTML = ''
-            for(let i = 0;i < arr.length; i++){
-                const tr = document.createElement('tr')
-                tr.innerHTML = `
+        function render() {
+            document.querySelector('tbody').innerHTML = ''
+
+            const newarr = arr.map(function (ele, index) {
+                return `
                 <tr>
-                    <td>${arr[i].Uname}</td>
-                    <td>${arr[i].Age}</td>
-                    <td>${arr[i].Sex}</td>
-                    <td>${arr[i].City}</td>
-                    <td><a href="javascript:" class="delete" data-index="${i}">Delete</a></td>
+                    <td>${ele.Uname}</td>
+                    <td>${ele.Uage}</td>
+                    <td>${ele.Sex}</td>
+                    <td>${ele.Ulocation}</td>
+                    <td><a href="javascript:" class="delete" data-index="${index}">Delete</a></td>
                 </tr>
                 `
-                tbody.appendChild(tr)
-            }
+            })
+            const str = newarr.join('')
+            // console.log(newarr);
+            // console.log(str);
+            document.querySelector('tbody').innerHTML = str
         }
 
-        const tbody = document.querySelector('tbody')
-        tbody.addEventListener('click', function(e){
-            if (e.target.tagName == 'A'){
-                // console.log(e.target.dataset.index)
+
+        tbody.addEventListener('click', function (e) {
+            const tr = document.querySelectorAll('.tr')
+            if (e.target.tagName == "A") {
+                // console.log(e.target.dataset.index);
                 arr.splice(e.target.dataset.index, 1)
-                // console.log(arr)
+                // console.log(arr);
+                localStorage.setItem('data', JSON.stringify(arr))
                 render()
+
             }
         })
+
+
+        render()
 
     </script>
 </body>

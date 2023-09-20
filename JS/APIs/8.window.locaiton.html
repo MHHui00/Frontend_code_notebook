@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+
+        <input type="text" name="uname">
+        <input type="text" name="pwd">
+        <button>submit</button>
+    </form>
+        <a href="#/my">我的</a>
+        <a href="#/download">下載</a>
+        <a href="#/main">主頁</a>
+
+        <button class="reload">刷新</button>
+        <button class="baidu">跳轉百度</button>
+        
+
+        <script>
+            //review location 的四種用法
+
+            //location.search: 獲取form提交的信息（name屬性）
+            //location.hash: 獲取頁面哈希值
+
+            console.log(location.search);
+            console.log(location.hash);
+
+            document.querySelector('.reload').addEventListener('click',function(){
+                // location.reload()   //刷新
+                location.reload(true)   //強制刷新
+
+            })
+            document.querySelector('.baidu').addEventListener('click',function(){
+                location.href = "https://baidu.com"
+            })
+        </script>
+    </body>
+</html>
