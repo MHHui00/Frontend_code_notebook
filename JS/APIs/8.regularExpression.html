@@ -28,7 +28,7 @@
         console.log(/a$/.test('bbbbbba'))    //t
         console.log(/a$/.test('aaaaab'))    //f
 
-        //^啊$  同時使用代表精確匹配，（只有一個‘啊’且是開和結尾）所以只有‘啊’是true
+        //^啊$  同時使用代表精確匹配，所寫即所得。所以只有‘啊’是true
         console.log('-------^ $---------')
         console.log(/^a$/.test('abbbbba'))  //f   
         console.log(/^a$/.test('aa'))       //f   
@@ -84,7 +84,7 @@
         console.log(/^a{3,}$/.test('aaaa'))     //t
         console.log(/^a{3,}$/.test('aaaaa'))    //t
 
-        //啊{n,m} ‘啊’ >=n &&  '啊'<=m
+        //啊{n,m} ‘啊’ >=n &&  '啊'<=m  不要加空格！
         console.log('-------{n,m}---------')
         console.log(/^a{3,5}$/.test('a'))
         console.log(/^a{3,5}$/.test('aa'))
@@ -92,6 +92,50 @@
         console.log(/^a{3,5}$/.test('aaaa'))    //t
         console.log(/^a{3,5}$/.test('aaaaa'))   //t
         console.log(/^a{3,5}$/.test('aaaaaa'))
+
+        //review reg.字符   []裏面的範圍，允許出現一次； []{n},裏面的範圍，允許出現n次
+        console.log('-------[]---------')
+        console.log(/^[abc]$/.test('a'))
+        console.log(/^[abc]$/.test('b'))
+        console.log(/^[abc]$/.test('c'))
+        console.log(/^[abc]$/.test('ab'))
+        console.log(/^[abc]$/.test('bc'))
+        console.log(/^[abc]{3}$/.test('ccc'))
+        console.log(/^[abc]{3}$/.test('bbb'))
+
+        //[a-z]: [1-9]
+        console.log('-------[]{n}---------')
+        console.log(/^[a-z]$/.test('a'))
+        console.log(/^[a-z]$/.test('B'))
+        console.log(/^[a-zA-Z]$/.test('j'))
+        console.log(/^[a-zA-Z]$/.test('J'))
+        console.log(/^[a-zA-Z0-9]$/.test('9'))
+        console.log(/^[a-zA-Z0-9]$/.test('a'))
+        console.log(/^[a-zA-Z0-9]$/.test('b'))
+
+        //[^a-z]: 除了a～z；[^1-9]：除了1～9
+        console.log('-------[^]---------')
+        console.log(/^[^a-z]$/.test('a'))
+
+
+        //  \d = [0-9]     \w = [a-zA-Z0-9_] 字母數字和！下劃線    \s = [\t\n\r\v\f]
+        //  \D = [^0-9]     \W = [^a-zA-Z0-9_]      \S = [^\t\n\r\v\f]
+        
+        //review 修飾符： /^example$/修飾符
+        console.log('-------/^example$/修飾符---------')
+        console.log(/^java$/.test('JAVA'))
+        console.log(/^java$/i.test('JAVA'))         //i = 大小寫皆匹配
+
+        const str2 = 'JAVA is a programe language, java is good'
+        let result = str2.replace(/java/i, 'C++')
+        console.log(result) //C++ is a programe language, java is good
+
+
+        let result2 = str2.replace(/java/ig, 'C++')     //g = 返回所有滿足的結果（沒有g默認只返回第一個）
+        console.log(result2) //C++ is a programe language, C++ is good
+
+
+        
     </script>
 </body>
 

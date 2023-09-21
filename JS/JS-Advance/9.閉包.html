@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //閉包：一個函數裡的內部函數使用了他外部的變量 就形成閉包
+        function abc(){
+            let i = 0;
+            function qwe(){
+                i++;
+                console.log(i)
+            }
+            return qwe  //review 閉包的用法：設外部函數的返回值為內部函數，開後門
+        }
+
+    const pointer = new abc()   
+    //在全局作用域聲明該外部函數。實現從全局（通過該變量）access 一個函數的局部變量。
+    //因為標記垃圾回收機制 是判斷變量是否能夠從global access到該變量。通過return 留下的後門，就可以實現外部可access
+    //但有洩漏的風險
+    pointer()
+    pointer()
+    
+    </script>
+</body>
+</html>
