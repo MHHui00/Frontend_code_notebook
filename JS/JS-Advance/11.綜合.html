@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active {
+            color: red;
+        }
+
+        li {
+            cursor: pointer;
+        }
+        li:active {
+            color: pink;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <ul>
+        <!-- <li>子元素1,點擊變紅<span>qwe</span></li>
+        <li>子元素2,點擊變紅<span>w</span></li>
+        <li>子元素3,點擊變紅<span>e</span></li>
+        <li>子元素4,點擊變紅<span>a</span></li>
+        <p>P tag</p> -->
+    </ul>
+    <script>
+        const array = [
+            {
+                name: 'aaaaa',
+                id: 666,
+            },
+            {
+                name: 'bbbbb',
+                id: 7777,
+            },
+            {
+                name: 'cccccc',
+                id: 88888,
+            }
+        ]
+
+
+        const ul = document.querySelector('ul')
+
+        function render() {
+            let str = '';
+            array.forEach(ele => {
+                const { name, id } = ele;
+                str += `
+                <li>${name}<span>${id}</span></li>
+            `
+            });
+            ul.innerHTML = str;
+        };
+        render();
+    </script>
+</body>
+
+</html>

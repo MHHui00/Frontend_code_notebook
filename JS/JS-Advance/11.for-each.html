@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //review forEach: 和map語法一樣。唯一不同是不返回任何東西，只便利數組（常用於便利數組對象）
+        const arr = ['a', 'b', 'c', 'd'];
+        arr.forEach(function(ele,index){
+            console.log(ele);
+            console.log(index);
+        })
+
+
+        const array = [
+            {
+                name: 'aaaaa',
+                id: 666,
+            },
+            {
+                name: 'bbbbb',
+                id: 7777,
+            }
+        ]
+        array.forEach((ele,index)=>{
+            console.log(ele.name);
+            console.log(ele.id);
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //review 對象解構
+        const obj = {
+            uname: 'qwe',
+            age: 18,
+        }
+
+        const array = [
+            {
+                name: 'aaaaa',
+                id: 666,
+                family: {
+                    bro: 'kk',
+                    sis: 'gg',
+                },
+
+                place: {
+                    cn: 'HK',
+                    ca: 'calgary'
+                }
+            }
+        ]
+
+        //！变量名必须和属性名字一样
+        const { uname, age } = obj
+        console.log(uname);
+        console.log(age);
+
+        //改名
+        const { uname: N, age: A } = obj
+        console.log(N);
+        console.log(A);
+
+        //数组对象的解構
+        [{ name, id, family: { bro, sis }, place:{cn, ca} }] = array    //review！！改名的寫法和解構多重對象的寫法一樣
+        console.log(name);
+        console.log(id);
+        console.log(bro);
+        console.log(sis);
+        console.log(cn);
+        console.log(ca);
+
+
+    </script>
+</body>
+
+</html>

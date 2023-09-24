@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //review filter函數：和map，格式一樣也是返回新的數組。但是map是對原數組每個元素做操作，返回的長度是和原數組一樣的。
+        const arr = [10, 20, 30, 40];
+        const filtering = arr.filter(ele=>{
+            return ele>=30      //！！語句返回的不是一個bool，而是返回所有滿足條件的元素所組成的數組。
+        })
+        console.log(filtering);
+
+        //複習箭頭函數，對以上簡化。只有return一句可省略
+        const filtering2 = arr.filter(ele=>ele>=30)
+        console.log(filtering2);
+
+    </script>
+</body>
+
+</html>

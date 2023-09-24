@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //review 箭頭函數：用來簡化 函數表達式(匿名函數)。不能使用動態參數，可以使用剩餘函數。他簡化的是表達式，不是聲明，所以不存在函數提升。
+        // 一般函數
+        // let fn = function () {
+        //     console.log(123);
+        // }
+        // fn()
+
+        // 1.箭頭簡化
+        // let fn = () => {
+        //     console.log(123);
+        // }
+        // fn()
+
+        // 2.只有一行可省{ }
+        // let fn = (x) => console.log(x + x);
+        // fn(x)
+
+        // 3.只有一個形參，()可以省
+        // let fn = x => console.log(x + x);
+        // fn(2)
+
+        // 4.函數只有一行return時，不僅可以去掉{ },return 也可以省略
+        // let fn = x => x + x;    //  let fn = (x) => return x+x;
+        // console.log(fn(123));
+
+        // 5.返回對象
+        //正常不省略寫法：    {}出現重複，會衝突,將 {} 改為 （）
+        // let fn = x => {
+        //     {id: x}
+        // }
+
+        // 改為（）
+        // let fn = x => ({id: x})
+        // console.log(fn(2020055585));
+
+
+        //應用  
+        let sum = (...arr) => {
+            let result = 0;
+            for (let i = 0; i < arr.length; i++) {
+                result += arr[i];
+            }
+            return result;
+        }
+
+        console.log(sum(2, 3, 4, 5));
+    </script>
+</body>
+
+</html>

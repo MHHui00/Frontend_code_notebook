@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //review 解構數組：把裡面的元素批量賦值給 的變量。
+        const arry = [1, 2, 3, 4];      //這裡必需加分號
+        [one, two, three, four] = arry;    //
+
+        console.log(one);
+        console.log(two);
+        console.log(three);
+        console.log(four);
+        console.log('-----------------');
+
+        // 形參>實參
+        const arry2 = ['q', 'w', 'e', 'a'];      //這裡必需加分號
+        [q, w, e, a, s] = arry2
+        console.log(q);
+        console.log(w);
+        console.log(e);
+        console.log(a);
+        console.log(s);     //undefined
+        console.log('-----------------');
+
+
+        // 形參<實參
+        const arry3 = [6, 7, 8, 9];
+        [six, seven, ...remain] = arry3
+        console.log(six);
+        console.log(seven);
+        console.log(remain);    //展開運算符[8,9]，真數組
+        console.log('-----------------');
+
+
+        //支持默認值
+        [a1, a2, a3 = 'default'] = ['a1', 'a2']
+        console.log(a1);
+        console.log(a2);
+        console.log(a3);
+        console.log('-----------------');
+
+        //可 skip 賦值
+        [b1, b2,  , b4] = ['b1', 'b2', 'b3', 'b4']
+        console.log(b1);
+        console.log(b2);
+        console.log(b4);
+        console.log('-----------------');
+
+
+        //review 解構多維數組
+        // [c1,c2,c3] = [1,2,[3,4]]
+        // console.log(c1);
+        // console.log(c2);
+        // console.log(c3);    //[3,4]
+        
+        [c1,c2,[c3,c4]] = [1,2,[3,4]]
+        console.log(c1);
+        console.log(c2);
+        console.log(c3);    
+        console.log(c4);    
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function qwe (){
+        //     console.log(num);   //error
+        //     let num = 10;
+        // }
+
+        function qwe2 (){
+            console.log(num);   //var才會出現的變量提升，在執行之前把所有var變量的 ！聲明語句！（不提升賦值語句） 提升到目前作用域的最前面。即qwe3，所以 qwe2 ===qwe3
+            var num = 10;
+        }
+
+
+        function qwe3 (){
+            var num
+            console.log(num);   //undefined
+            num = 10;
+        }
+ 
+
+        // qwe()
+        qwe2()
+        qwe3()
+    </script>
+</body>
+</html>

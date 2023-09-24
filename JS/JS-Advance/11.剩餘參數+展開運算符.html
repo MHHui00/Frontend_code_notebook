@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //review 剩餘函數：較為常用，返回的是真數組而不是偽
+        //若要至少傳入兩個參數，如何實現。用剩餘函數
+        function sum(a, b, ...remain) {
+            // console.log(arr);   //不需要...
+            let sum = 0;
+            sum = a + b;
+            for (let i = 0; i < remain.length; i++) {
+                sum += remain[i];
+            }
+            console.log(sum);
+        }
+        // sum(2, 3, 4, 5, 6)
+        // sum(3, 4)
+        // sum(1, 2, 3, 4, 5, 6, 7)
+
+        //review 展開運算符：對數組使用，返回字符串。常用於求最大最小以及合併數組
+        let arr = [1, 2, 3, 4]
+        let arr2 = [5, 6, 7]
+        console.log(...arr)     //實際上返回了 1，2，3，4
+
+
+        //應用
+        console.log(Math.max(...arr));  //直接將數組展開，返回字符串，滿足max的參數需求
+        console.log(Math.min(...arr));  //min同理
+
+        //合併數組
+        let arr3 = [...arr, ...arr2]    //快速合併數組
+        console.log(arr3);
+
+    </script>
+</body>
+
+</html>

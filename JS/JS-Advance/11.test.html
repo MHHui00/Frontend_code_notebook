@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let q = x=>x+x
+        // console.log(q(2));
+        const obj = {
+            "code": 100,
+            "qwe": "肯德基",
+            "data": [
+                {
+                    "id": 1,
+                    "name": "justin",
+
+                },
+                {
+                    "id": 2,
+                    "name": "tom",
+
+                },
+                {
+                    "id": 3,
+                    "name": "ken",
+
+                }
+            ]
+        }
+
+        // const {data: [{id, name}] } = obj;
+        // // console.log(data);
+        // console.log(id);
+        // console.log(name);
+
+
+        //1.
+        // const {data} = obj;
+        // function render(data){
+
+        //     console.log(data[0].id);
+        //     console.log(data[0].name);
+        // };
+        // render(data);
+
+        
+        //2.
+        function render({data:k}){
+            console.log(k[2].id);
+            console.log(k[2].name);
+        };
+        render(obj);
+        
+    </script>
+</body>
+
+</html>
