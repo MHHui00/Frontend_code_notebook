@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const arr2 = [
+            {
+                name: 'aaaaa',
+                num: 10
+            },
+            {
+                name: 'bbbbb',
+                num: 20
+            },
+            {
+                name: 'bbbbb',
+                num: 30
+            },
+        ]
+
+        // const result = arr2.filter(function (ele) {
+        //     return ele.name == 'bbbbb'
+        // });
+        const result = arr2.filter(ele => ele.name == 'bbbbb');
+        console.log(result);
+    </script>
+</body>
+
+</html>

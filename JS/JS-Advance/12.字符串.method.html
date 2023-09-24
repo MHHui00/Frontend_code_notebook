@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //review split('') 以什麼分割
+        const str = '2023-9-24';
+        let sep = str.split('-');
+        console.log(sep);
+        console.log('---------------');
+
+
+        //review subString(start-index, [, end-index])  返回子串
+        const str2 = 'qweasd'; 
+        console.log(str2.substring(0,2));   //qw， 0～2 但是不包含2！！
+        console.log(str2.substring(0,3));   //qwe
+        console.log(str2.substring(3));   //asd，3到最後
+        console.log('---------------');
+
+
+        //review startwith( 'startString', [, start-index])  返回bool
+        console.log(str2.startsWith('qwe'));        //t
+        console.log(str2.startsWith('weasd'));      //f, 必須是字符串的開頭
+        console.log(str2.startsWith('weasd',1));    //t
+        console.log('---------------');
+
+        //review include( 'containString', [, start-index])  返回bool
+        console.log(str2.includes('qwe'));        //t   包含即可
+        console.log(str2.includes('asd'));        //t
+        console.log(str2.includes('weasd'));      //t
+        console.log(str2.includes('weasd',1));    //t
+        
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //create a object:
+        //1.
+        const obj1 = {
+            Uname: 'qwe',
+            Age: 19,
+        }
+
+        //2.
+        const Obj2 = new Object();
+
+        //review 3.constructor 一般大寫字母開頭 
+        function pig(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        const pig1 = new pig('qwe', 20)
+        console.log(pig1);
+    </script>
+</body>
+
+</html>

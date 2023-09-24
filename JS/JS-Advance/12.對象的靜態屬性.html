@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script> 
+    //review 構造函數名字的屬性和方法，都是靜態的，只能通過構造本身調用。實力對象不能。和c++不同
+        function pig(name, age) {
+            pig.type = 'animal';
+            pig.legs = 4;
+            pig.getEye = function(){
+                console.log(2);
+            }
+            this.name = name;
+            this.age = age;
+        }
+        const a = new pig('qwe',18);
+        const b = new pig('asd',15);
+
+        console.log(a.type);
+        pig.getEye();
+    </script>
+</body>
+
+</html>
