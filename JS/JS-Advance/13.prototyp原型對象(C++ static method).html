@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //review prototype 原型對象 =static method？ 聲明實例對象共同使用的函數，減少內存重複
+        function pig(name, age) {
+            this.name = name;
+            this.age = age;
+            // this.sing = function() {
+            //     console.log('sing');
+            // };
+        };
+
+        pig.prototype.sing = function(){console.log('sing');}
+        const pig1 = new pig('qwe', 20)
+        const pig2 = new pig('qwe', 20)
+
+        console.log(pig);
+
+        // console.log(pig1);
+        // console.log(pig2);
+
+        console.log(pig1.sing === pig2.sing);
+
+    </script>
+</body>
+</html>

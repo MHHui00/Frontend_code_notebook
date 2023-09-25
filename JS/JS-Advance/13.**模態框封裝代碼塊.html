@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: gray;
+            position: relative;
+
+        }
+
+        .box .head {
+            height: 50px;
+            background-color: pink;
+            line-height: 50px;
+
+        }
+
+        .box .body {
+            height: 150px;
+            background-color: skyblue;
+            line-height: 150px;
+
+        }
+
+        a {
+            display: block;
+            width: 20px;
+            height: 20px;
+            text-decoration: none;
+            color: black;
+            position: absolute;
+            right: 0px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="test">test</button>
+    <button class="fun1">fun1</button>
+    <button class="fun2">fun2</button>
+
+    <div class="container">
+        <!-- <div class="box">
+            <a href="javascript:">X</a>
+            <div class="head">1</div>
+            <div class="body">2</div>
+        </div> -->
+    </div>
+    <script>
+        //review 1.面向對象思想
+        //review 2.形參傳入字符串寫法
+        function Modal(title = '', mess = '') {
+            this.box = document.createElement('div');
+            this.box.className = 'box';
+            this.box.innerHTML = `
+                <a href="javascript:">X</a>
+                <div class="head">${title}</div>
+                <div class="body">${mess}</div>
+            `
+            // console.log(this.box);
+        }
+
+        Modal.prototype.open = function () {
+            //review 5.避免生成重複的box。不同功能的彈窗也不會重疊
+            //邏輯中斷，沒有box，為空，false，不會remove。 box存在，true，先remove再重新渲染。
+            const box = document.querySelector('.box');
+            box && box.remove();
+
+            //渲染box
+            document.querySelector('.container').append(this.box);
+
+
+            // 只有當box渲染出來了，才能 querySelector到a標籤。所以 addEventListener應該放在渲染後
+            //review 3.**巧用=>的this。如果用function該函數裡的this指針為調用者，即a標籤。用=>，this為上一級的this，即.open()的this，即實例本身。這樣才方便用this來remove自己的box
+            // review 4.**不用document.querySelector, 而是 this.box.querySelector，單獨為每一個實例對象的 a添加事件。
+            this.box.querySelector('a').addEventListener('click', () => {
+                // console.log(this)
+                this.close();
+            })
+        };
+
+        Modal.prototype.close = function () {
+            this.box.remove();
+        }
+
+        document.querySelector('.test').addEventListener('click', function () {
+            const even = new Modal('title', 'message');
+            even.open()
+        });
+        document.querySelector('.fun1').addEventListener('click', function () {
+            const even2 = new Modal('功能一', '阿塞德發生都發生的');
+            even2.open()
+        });
+        document.querySelector('.fun2').addEventListener('click', function () {
+            const even3 = new Modal('功能二', '是都發生的解放軍');
+            even3.open()
+        });
+
+
+    </script>
+</body>
+
+</html>
