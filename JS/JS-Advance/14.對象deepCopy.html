@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const obj = {
+            uname: 'qwe',
+            age: 18,
+            family: {
+                uname: 'qwe',
+                age: 18,
+            },
+            group: [1,2,3,4]
+        }
+
+        //1. 遞歸recursion 實現，變量對象屬性。
+        function deepCopy(newObj, oldObj) {
+            for (let k in oldObj) {
+                if (oldObj[k] instanceof Array) {
+                    newObj[k] = [];
+                    deepCopy(newObj[k], oldObj[k]);
+                } else if (oldObj[k] instanceof Object) {
+                    newObj[k] = {};
+                    deepCopy(newObj[k], oldObj[k]);
+                } else {
+                    newObj[k] = oldObj[k]
+                }
+            }
+        }
+        debugger
+        const obj2 = {};
+        deepCopy(obj2, obj);
+        obj2.family.age = 123;
+        obj2.group[0] = 66666;
+
+        console.log(obj2);
+        console.log(obj);
+
+        //2. import lodash library.  
+        // const newObj = _.cloneDeep(oldObj);
+
+
+        //3. JSON
+        const newnewObj = JSON.parse(JSON.stringify(obj));  //先把對象轉換成字符串再轉換回對象。
+        // newnewObj.family.age = 666;
+        // console.log(newnewObj);
+        // console.log(obj);
+    </script>
+</body>
+
+</html>

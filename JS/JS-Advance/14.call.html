@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const obj = {
+            uname: 'qwe',
+            age: 18,
+            family: {
+                uname: 'qwe',
+                age: 18,
+            },
+            group: [1,2,3,4]
+        }
+
+        function fun(x,y){
+            console.log(this);
+            console.log(x+y);
+        };
+        fun();
+        fun.call(obj, 1,2);
+
+    </script>
+</body>
+</html>

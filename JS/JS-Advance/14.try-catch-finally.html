@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>123</p>
+    <script>
+        //throw 会中断函数，没有return。但是不影响finally，finally一定会执行。
+
+        function Try (){
+
+            try{
+                // const p = document.querySelector('p');
+                const p = document.querySelector('.p');     //wrong statement
+                p.style.color = 'red';
+                
+                console.log('出现错误了，剩下部分不会正常执行');
+            }catch(er){
+                console.log(er);
+                // throw '出现错误'      //ok了
+                // throw new Error('出错') //or 使用 new Error。显示错误的行数，更精确
+                console.log('剩下部分也不会正常执行');
+            }finally{
+                //一定会执行的语句
+                console.log('Completed');
+            }
+            return console.log('Function returned');
+        };
+
+        Try();
+    </script>
+</body>
+</html>
