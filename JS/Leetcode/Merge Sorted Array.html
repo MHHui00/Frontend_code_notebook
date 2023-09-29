@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let nums1 =[0,0,3,0,0,0,0,0,0], nums2 = [-1,1,1,1,2,3];
+        const m = 3, n = 6;
+        var merge = function(nums1, m, nums2, n) {
+            nums1.splice(m);
+            nums2.splice(n);
+            let merg = [...nums1, ...nums2];
+            // console.log(merg);
+            merg.sort((a,b)=>a-b);
+            // console.log(merg);
+            for(let i = 0; i<merg.length; i++){
+                nums1[i]= merg[i]
+            }
+            
+            // return merg
+        };
+        // console.log(merge(nums1, m, nums2, n));
+        // console.log(nums1);
+
+
+        //method 2:
+        function second (nums1, m, nums2, n) {
+            for(let i = m, j = 0; j < 6; i++, j++){
+                nums1[i]=nums2[j];
+            }
+            nums1.sort((a,b)=>a-b);
+        };
+        second(nums1, m, nums2, n);
+        console.log(nums1);
+    </script>
+</body>
+</html>

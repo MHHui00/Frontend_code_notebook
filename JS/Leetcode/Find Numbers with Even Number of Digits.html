@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function findNumbers (nums) {
+        //     let result = 0;
+        //     nums.forEach(ele => {
+        //         let j = 0;
+        //         while(ele >= 1){
+        //             ele = ele/10;
+        //             j+=1;
+        //         }
+        //         if (j % 2 == 0) { result += 1; };
+        //     })
+        //     return result;
+        // };
+        
+        function findNumbers (nums) {
+            let result = 0;
+            nums.forEach(ele => {
+                if (ele.toString().length % 2 == 0) { result += 1; };
+            })
+            return result;
+        };
+        
+        const arr = [12, 345, 2, 6, 7896];
+        // const arr = [12];
+        console.log(findNumbers(arr));
+    </script>
+</body>
+</html>
