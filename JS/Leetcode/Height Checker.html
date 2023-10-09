@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const heights = [1, 1, 4, 2, 1, 3];
+        var heightChecker = function (heights) {
+            let mark = 0;
+            let modi = Array.from(heights);
+            modi.sort((a, b) => a - b);
+            heights.forEach((ele, index) => {
+                mark = modi[index] === ele ? mark : mark + 1;
+            })
+            return mark;
+        };
+        console.log(heightChecker(heights));
+    </script>
+</body>
+
+</html>

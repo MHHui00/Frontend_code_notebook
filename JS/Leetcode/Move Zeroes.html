@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const nums = [0, 0, 2, 0, 1];
+        let write = 0;
+        var moveZeroes = function (nums) {
+            for (let i = 0; i < nums.length; i++) {
+                if (nums[i] != 0) {
+                    nums[write] = nums[i];
+                    write++;
+                }
+            }
+            for (; write < nums.length; write++) {
+                nums[write] = 0;
+            }
+        };
+        moveZeroes(nums);
+        console.log(nums);
+    </script>
+</body>
+
+</html>

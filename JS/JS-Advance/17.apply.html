@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //call()和apply()，調用時可以指定this指針。 diff：apply傳遞的是數組，call傳普通類型
+        const arr = [1,2,3,4,5];
+        let M1 = Math.max(arr);
+        let M2 = Math.max(...arr);
+        // console.log(M1);
+        // console.log(M2);
+
+        let M3 = Math.max.apply(null,arr);
+        // console.log(M3);
+        // console.log(Math.max(...arr));
+
+        function test (arr){
+            console.log(arr);
+        }
+        console.log(arr);
+        test.apply(null, arr)
+    </script>
+</body>
+</html>

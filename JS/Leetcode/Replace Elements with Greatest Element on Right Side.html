@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const arr = [17, 18, 5, 4, 6, 1];
+        var replaceElements = function (arr) {
+            const result = [];
+            result[arr.length - 1] = -1;
+            let max = arr[arr.length - 1];
+            for (let i = arr.length - 2; i > -1; i--) {
+                if (arr[i + 1] > max) {
+                    max = arr[i + 1];
+                    result[i] = max;
+                } else result[i] = max;
+                // result[i] = arr[i];
+                console.log(result);
+            }
+        };
+
+        replaceElements(arr);
+    </script>
+</body>
+
+</html>

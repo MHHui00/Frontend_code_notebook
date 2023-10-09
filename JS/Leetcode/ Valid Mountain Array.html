@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const arr = [0,3,2,1];
+        // var validMountainArray = function (arr) {
+        //     let first = false, up = false, down = false;
+        //     for (let i = 0; i < arr.length; i++) {
+        //         if (first == false && up == false && arr[i] < arr[i + 1]) {
+        //             first = true;
+        //             up = true;
+        //             continue;
+        //         } else if (first == true && down == false && up == true && arr[i] < arr[i + 1]) {
+        //             continue
+        //         } else if (first == true && up == true && arr[i] > arr[i + 1]) {
+        //             if (i + 1 == arr.length) return true;
+        //             else continue;
+        //         } else return false;
+
+        //     }
+        // };
+
+
+        // var validMountainArray = function (arr) {
+        //     let first = false, up = false, down = false;
+        //     for (let i = 0; i < arr.length; i++) {
+        //         if (first == false && up == false && arr[i] < arr[i + 1]) {
+        //             first = true;
+        //             up = true;
+        //             continue;
+        //         } else if (first == true && down == false && up == true && arr[i] < arr[i + 1]) {
+        //             continue
+        //         } else if (first == true && up == true) {
+        //             if (arr[i+1]){
+        //                 if (arr[i] > arr) continue;
+        //             }else return true
+        //         } else return false;
+
+        //     }
+        // };
+
+        var validMountainArray = function (arr) {
+            if (arr[0] < arr[1]){
+                for(let i = 1; i < arr.length; i++){
+                    if(arr[i+1] < arr[i] ){
+                        for(let j = i+1; j < arr.length; j++){
+                            if(arr[j] >= arr[j-1])return false;
+                        }
+                        return true;
+                    }else if(arr[i+1] > arr[i]) {
+                        continue;
+                    }else return fales;
+                }
+            }else return false;
+        };
+
+        console.log(validMountainArray(arr));
+    </script>
+</body>
+
+</html>
