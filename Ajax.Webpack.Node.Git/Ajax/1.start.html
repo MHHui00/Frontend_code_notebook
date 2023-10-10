@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p class="text"></p>
+
+    <!-- 導入axios包： https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js -->
+    <!-- 目標資源地址： http://hmajax.itheima.net/api/province -->
+
+
+    <!-- 引入axios函数 -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        //review axios基本语法
+        axios({
+            url: "http://hmajax.itheima.net/api/province",
+        }).then(result => {
+            // console.log(result);
+            // console.log(result.data.list);
+            // console.log(result.data.list.join('<br>'));
+
+            //render data
+            // document.querySelector('.text').innerHTML = result.data.list.join('<br>');
+        })
+
+
+        //review 通过params：传递参数进行查询
+        axios({
+            url: "http://hmajax.itheima.net/api/city",
+            params: {
+                pname: '广东省',
+            }
+        }).then(result => {
+            console.log(result.data.list);
+
+            document.querySelector('.text').innerHTML = result.data.list.join('<br>');
+
+        })
+    </script>
+</body>
+
+</html>
