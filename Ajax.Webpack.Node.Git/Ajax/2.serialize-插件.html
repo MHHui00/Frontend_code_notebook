@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <div class="mb-3">
+            <label for="username" class="form-label">账号名</label>
+            <input type="text" class="form-control username" name="username">   
+            <!-- review input里必须包含 name才能成功获取（作为获取属性名, 最好与接口文件名字对应） -->
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">密码</label>
+            <input type="password" class="form-control password" name="password">
+        </div>
+        <button type="button" class="btn btn-primary btn-login"> 登 录 </button>
+    </form>
+
+
+    <!-- import library -->
+    <script src="form-serialize.js"></script>
+    <script>
+        document.querySelector('button').addEventListener('click', () => {
+            const form = document.querySelector('form');
+            //review form-serialize插件，快速获取form里的内容。传入目标form的html，和配置对象
+            //hash： true：返回js对象； false：返回查询字符串
+            //empty： 是否包含空值
+            const data = serialize(form, {hash: true, empty: true});
+            // const data = serialize(form, {hash: false, empty: true}); //username=qwe&password=123
+            console.log(data);
+        })
+    </script>
+</body>
+
+</html>
