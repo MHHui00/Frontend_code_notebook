@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>案例-图书管理</title>
+  <!-- 字体图标 -->
+  <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_3736758_vxpb728fcyh.css">
+  <!-- 引入bootstrap.css -->
+  <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css" rel="stylesheet">
+  <!-- 核心样式 -->
+  <!-- <link rel="stylesheet" href="./css/index.css"> -->
+  <style>
+    /* å…¬å…±*/
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+    .container {
+      width: 1340px;
+      margin: 0 auto;
+      padding-top: 60px;
+      box-sizing: border-box;
+    }
+
+    /* alertæç¤ºæ¡† */
+    .toast {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .toast .toast-body {
+      padding: 0 !important;
+    }
+
+    .toast .alert-success {
+      margin-bottom: 0 !important;
+    }
+
+    /* å¤´éƒ¨å¯¼èˆª */
+    .container .top {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .container .top h3 {
+      font-weight: 900;
+    }
+
+    .container .top .plus-btn {
+      background-color: #539ACB !important;
+      color: #fff;
+      border: none;
+    }
+
+    /* è¡¨æ ¼éƒ¨åˆ† */
+    .table {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .table-light th {
+      background-color: #939CA7 !important;
+      color: #ffffff;
+      font-family: PingFangSC-Medium;
+      font-size: 16px;
+      text-align: center;
+      font-weight: 500;
+      border-right: 1px solid lightgray;
+    }
+
+    .table-light th:last-of-type {
+      border-right: none;
+    }
+
+    /* è¡¨æ ¼å†…å®¹ */
+    .table tbody td {
+      color: #696F77;
+    }
+
+    .table .del {
+      color: #E5964C;
+      margin-right: 30px;
+    }
+
+    .table .edit {
+      color: #539ACB;
+    }
+
+    .table tbody tr {
+      height: 30px;
+      line-height: 30px;
+    }
+
+    .table tbody tr td:last-of-type span {
+      cursor: pointer;
+    }
+
+    /* å¼¹å‡ºå±‚ */
+    .modal .top {
+      display: flex;
+      justify-content: center;
+      background-color: #F0F3F7;
+      padding: 15px 0;
+      width: 100%;
+      position: relative;
+      color: #1E2023;
+    }
+
+    /* å³ä¸Šè§’-å…³é—­æŒ‰é’® */
+    .modal .btn-close {
+      font-size: 12px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 23px;
+      /* è¦†ç›–bootstrapæ ·å¼ */
+      margin: 0;
+      padding: 0;
+    }
+
+    /* è¡¨å•å®¹å™¨ */
+    .form-wrap {
+      box-sizing: border-box;
+      background-color: white;
+      padding: 40px;
+    }
+
+    .form-wrap .form-label {
+      color: #696F77;
+    }
+
+    /* ä¿®æ”¹è¾“å…¥æ¡†é»˜è®¤å ä½æ–‡å­—
+    webkitå†…æ ¸, firefox18-, firfox19+, å…¶ä»–
+    */
+    .form-wrap input::-webkit-input-placeholder {
+      color: #BFBFBF !important;
+      font-size: 14px;
+    }
+
+
+    /* åº•éƒ¨æŒ‰é’®ç»„ */
+    .modal-footer {
+      border-top: 0;
+    }
+
+    .btn-group {
+      text-align: center;
+      width: 100%;
+    }
+
+    /* ä¿®æ”¹bsçš„æŒ‰é’®å¼¹æ€§å¸ƒå±€-æ”¹æˆè‡ªå·±è®¾ç½®å¤§å° */
+    .btn-group,
+    .btn-group-vertical {
+      display: block;
+    }
+
+    .btn-group button {
+      width: 120px
+    }
+
+    .btn-group button:first-of-type {
+      border: 1px solid #E3E3E3;
+      background-color: #fff;
+      color: black;
+      margin-right: 60px;
+    }
+
+    .btn-group button:last-of-type {
+      background-color: #539ACB;
+    }
+
+    .alert-success {
+      border-color: transparent;
+    }
+
+    .toast {
+      border: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 主体区域 -->
+  <div class="container">
+    <!-- 头部标题和添加按钮 -->
+    <div class="top">
+      <h3>图书管理</h3>
+      <button type="button" class="btn btn-primary plus-btn" data-bs-toggle="modal" data-bs-target=".add-modal"> + 添加
+      </button>
+    </div>
+    <!-- 数据列表 -->
+    <table class="table">
+      <thead class="table-light">
+        <tr>
+          <th style="width: 150px;">序号</th>
+          <th>书名</th>
+          <th>作者</th>
+          <th>出版社</th>
+          <th style="width: 180px;">操作</th>
+        </tr>
+      </thead>
+      <tbody class="list">
+        <tr>
+          <td>1</td>
+          <td>JavaScript程序设计</td>
+          <td>马特·弗里斯比</td>
+          <td>人民邮电出版社</td>
+          <td>
+            <span class="del">删除</span>
+            <span class="edit">编辑</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- 新增-弹出框 -->
+  <div class="modal fade add-modal">
+    <!-- 中间白色区域 -->
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header top">
+          <span>添加图书</span>
+          <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body form-wrap">
+          <!-- 新增表单 -->
+          <form class="add-form">
+            <div class="mb-3">
+              <label for="bookname" class="form-label">书名</label>
+              <input type="text" class="form-control bookname" placeholder="请输入书籍名称" name="bookname">
+            </div>
+            <div class="mb-3">
+              <label for="author" class="form-label">作者</label>
+              <input type="text" class="form-control author" placeholder="请输入作者名称" name="author">
+            </div>
+            <div class="mb-3">
+              <label for="publisher" class="form-label">出版社</label>
+              <input type="text" class="form-control publisher" placeholder="请输入出版社名称" name="publisher">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer btn-group">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal"> 取消 </button>
+          <button type="button" class="btn btn-primary add-btn"> 保存 </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 编辑-弹出框 -->
+  <div class="modal fade edit-modal">
+    <!-- 中间白色区域 -->
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header top">
+          <span>编辑图书</span>
+          <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body form-wrap">
+          <!-- 编辑表单 -->
+          <form class="edit-form">
+            <input type="hidden" class="id" name="id">
+            <div class="mb-3">
+              <label for="bookname" class="form-label">书名</label>
+              <input type="text" class="form-control bookname" placeholder="请输入书籍名称" name="bookname">
+            </div>
+            <div class="mb-3">
+              <label for="author" class="form-label">作者</label>
+              <input type="text" class="form-control author" placeholder="请输入作者名称" name="author">
+            </div>
+            <div class="mb-3">
+              <label for="publisher" class="form-label">出版社</label>
+              <input type="text" class="form-control publisher" placeholder="请输入出版社名称" name="publisher">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer btn-group">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal"> 取消 </button>
+          <button type="button" class="btn btn-primary edit-btn"> 修改 </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.2.0/axios.min.js"></script>
+  <script src="form-serialize.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.min.js"></script>
+
+
+
+
+
+  <!-- 核心逻辑 -->
+  <script>
+    //1. 獲取圖書，並渲染頁面
+    const creator = 'qwe';
+    function Render() {
+      axios({
+        url: 'http://hmajax.itheima.net/api/books',
+        params: {
+          creator: creator,
+        }
+      }).then(result => {
+        // console.log(result.data.data);
+        const data = result.data.data.map((ele, index) => {
+          return `<tr>
+            <td>${index + 1}</td>
+            <td>${ele.bookname}</td>
+            <td>${ele.author}</td>
+            <td>${ele.publisher}</td>
+            <td data-id = "${ele.id}">
+              <span class="del">删除</span>
+              <span class="edit">编辑</span>
+            </td>
+          </tr>`
+        }).join('')
+        // console.log(data);
+        document.querySelector('.list').innerHTML = data;
+      })
+    }
+    Render(); //刷新頁面調用
+
+
+    //2. 新增
+    const addModalDom = document.querySelector('.add-modal');
+    const addModal = new bootstrap.Modal(addModalDom);
+    const addForm = document.querySelector(".add-form");
+    document.querySelector(".add-btn").addEventListener('click', () => {
+      const data = serialize(addForm, { hash: true, empty: true });
+      axios({
+        url: 'http://hmajax.itheima.net/api/books',
+        method: 'post',
+        data: {
+          // bookname: data.bookname,
+          // author: data.author,
+          // publisher: data.publisher,
+          ...data,  //展開對象，效果和以上三行相同
+          creator: creator,
+        }
+      }).then(result => {
+        // console.log(result.data);
+        Render(); //為什麼render必須放在then裡面？
+      }).finally(() => {
+        //如果放在axios之外，有什麼不同？
+        addForm.reset();  //清空form的輸入痕跡
+        addModal.hide();
+
+      })
+    })
+
+
+    //3. delete item
+    document.querySelector('.list').addEventListener('click', e => {
+      if (e.target.className === 'del') {
+        const deleteID = e.target.parentNode.dataset.id;
+        axios({
+          url: `http://hmajax.itheima.net/api/books/${deleteID}`,
+          method: 'delete',
+        }).then(result => {
+          Render();
+        }).catch(error => {
+        })
+      }
+    })
+
+
+
+    //4. modify item
+    const editModalDom = document.querySelector('.edit-modal');
+    const editModal = new bootstrap.Modal(editModalDom);
+    const editForm = document.querySelector('.edit-form');
+
+    document.querySelector('.list').addEventListener('click', e => {
+      if (e.target.className === 'edit') {
+        // const editID = e.target.parentNode.dataset.id;
+        //1.弹出窗口
+        editModal.show();
+
+        //2.自动填入原来的图书信息,这里使用网页的静态数据来实现，不安全。
+        //review 可以使用axios查询选中目标的ID，用Object.keys(result.data.data)得到目标图书的属性值。因为属性名和变量名相同，则forEach赋值
+        const placeHolderName = e.target.parentNode.parentNode.children[1].innerHTML;
+        const placeHolderAuthor = e.target.parentNode.parentNode.children[2].innerHTML;
+        const placeHolderID = e.target.parentNode.parentNode.children[4].dataset.id;
+        const placeHolderPublisher = e.target.parentNode.parentNode.children[3].innerHTML;
+        // console.log(placeHolderName, placeHolderAuthor, placeHolderPublisher, placeHolderID);
+        editForm.querySelector('.bookname').value = placeHolderName;
+        editForm.querySelector('.author').value = placeHolderAuthor;
+        editForm.querySelector('.publisher').value = placeHolderPublisher;
+        editForm.querySelector('.id').value = placeHolderID;
+
+      }
+    })
+
+    //3.修改按钮
+    document.querySelector('.edit-btn').addEventListener('click', () => {
+      const editForm = document.querySelector('.edit-form');
+      const editData = serialize(editForm, { hash: true, empty: true });
+      // console.log(editData);
+      const { id, bookname, author, publisher } = editData;
+      // console.log(id, bookname, author, publisher);
+
+      axios({
+        url: `http://hmajax.itheima.net/api/books/${id}`,
+        method: 'put',
+        data: {
+          bookname,
+          author,
+          publisher,
+          creator,
+        }
+      }).then(result => {
+        // console.log(result);
+        Render();
+        editModal.hide();
+      })
+    })
+  </script>
+</body>
+
+</html>

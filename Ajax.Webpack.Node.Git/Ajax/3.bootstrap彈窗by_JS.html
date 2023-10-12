@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <!-- review 引入css和js，看文檔。找組件，copy paste，自定屬性實現交互 -->
+    <button class="display">display box</button>
+
+    <!-- box -->
+    <div class="modal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <!-- <p>Modal body text goes here.</p> -->
+              <input type="text" class="username" placeholder="input name">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary save-btn">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      //review 獲取目標dom，用new bootstrap.Modal(dom)創建對象。利用對象show（）和hide（）實現彈窗。
+      const box = document.querySelector('.modal');
+      const mybox = new bootstrap.Modal(box);
+      // console.log(mybox);
+
+      document.querySelector(".display").addEventListener('click',()=>{
+        mybox.show();
+      })
+      document.querySelector('.save-btn').addEventListener('click', ()=>{
+        const getUsername = document.querySelector('.username').value;
+        mybox.hide();
+        console.log(getUsername);
+      })
+    </script>
+</body>
+</html>
