@@ -30,8 +30,10 @@
           password: '1234567',
         },
       }).then(result => {
+        //review 請求成功後幹的事情寫在這裡
         console.log(result);
-      }).catch(err =>{
+      }).catch(err => {
+        //review 請求失敗後幹的事情寫在這裡
         // console.log(err.response.data.message);
         alert(err.response.data.message)
       })
