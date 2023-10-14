@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p></p>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.2.0/axios.min.js"></script>
+
+    <script>
+        function myAxios(config) {
+            return p = new Promise((passed, failed) => {
+                const xhr = new XMLHttpRequest();
+                let queryString, queryData;
+                if (config.params) {
+                    queryString = new URLSearchParams(config.params).toString();
+                    config.url = config.url + '?' + queryString
+                }
+
+                xhr.open(config.method || 'get', config.url);
+                xhr.addEventListener('loadend', () => {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        passed(JSON.parse(xhr.response));
+                    } else failed(xhr.response);
+                });
+
+                if (config.data) {
+                    xhr.setRequestHeader('Content-Type', 'application/json')
+                    queryData = JSON.stringify(config.data)
+                    // console.log(queryData);
+                    xhr.send(queryData)
+                }else{
+                    xhr.send();
+                }
+            });
+        };
+
+
+        //無參數請求 ok
+        myAxios({
+            url: 'http://hmajax.itheima.net/api/province',
+            // method: 'get',
+        }).then(result => {
+            console.log(result);
+            document.querySelector('p').innerHTML = result.list.join('<br>');
+
+        }).catch(error => {
+            console.log(error);
+            document.querySelector('p').innerHTML = error;
+        })
+
+
+        //帶params ok
+        // myAxios({
+        //     url: 'http://hmajax.itheima.net/api/area',
+        //     params: {
+        //         pname: '广东省',
+        //         cname: '惠州市',
+        //     }
+        // }).then(result => {
+        //     console.log(result);
+        //     document.querySelector('p').innerHTML = result.list.join("<br>");
+
+        // }).catch(error => {
+        //     console.log(error);
+        //     document.querySelector('p').innerHTML = error;
+        // })
+
+
+
+        // //帶data ok
+        // myAxios({
+        //     url: 'http://hmajax.itheima.net/api/login',
+        //     method: 'post',
+        //     data: {
+        //         username: 'qweasdzxc',
+        //         password: '123456',
+        //     }
+        // }).then(result => {
+        //     console.log(result.message);
+        //     document.querySelector('p').innerHTML = result.message;
+        // }).catch(error => {
+        //     console.log(error);
+        //     document.querySelector('p').innerHTML = error;
+        // })
+    </script>
+</body>
+
+</html>

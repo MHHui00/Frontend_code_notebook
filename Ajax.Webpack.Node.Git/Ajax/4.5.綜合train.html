@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>qwe</p>
+    <script>
+        const data = {
+            pname: '广东省',
+            cname: '惠州市',
+        }
+        const p = new Promise((resolve, reject)=>{
+            const queryString = new URLSearchParams(data).toString();
+
+            const xhr = new XMLHttpRequest();
+            // xhr.open('get', `http://hmajax.itheima.net/api/area?${queryString}qerqerqwe`);
+            xhr.open('get', `666http://hmajax.itheima.net/api/province`);
+
+            xhr.addEventListener('loadend', ()=>{
+                if(xhr.status >= 200 && xhr.status < 300){
+                    document.querySelector('p').innerHTML = JSON.parse(xhr.response).list.join('<br>');
+                    resolve('請求成功');
+                }else reject(new Error('請求失敗'))
+                // console.log(xhr);
+            })
+            xhr.send();
+        })
+        
+        p.then(result =>{
+            console.log(result);
+        }).catch(error=>{
+            console.log(error);
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>qwe</p>
+    <script>
+        //review XHR实现axios的“params”参数
+        //review 利用URLSearchParams 将obj的data转换为query参数。
+        //axios的params参数，其实做的就是将里面的obj转成query参数并自动加到url后面。
+        const data = {
+            pname: '广东省',
+            cname: '惠州市',
+        }
+
+        const paramsObj = new URLSearchParams(data);
+        const queryString = paramsObj.toString();
+        // console.log(queryString);
+
+        const xml2 = new XMLHttpRequest();
+        xml2.open('get', `http://hmajax.itheima.net/api/area?${queryString}`);
+        xml2.addEventListener('loadend', () => {
+            // console.log(xml2.response);
+            // console.log(JSON.parse(xml2.response));
+            // console.log(JSON.parse(xml2.response).list); 
+            // console.log(JSON.parse(xml2.response).list.join('<br>')); 
+            document.querySelector('p').innerHTML = JSON.parse(xml2.response).list.join('<br>');
+        })
+        xml2.send();
+    </script>
+</body>
+
+</html>

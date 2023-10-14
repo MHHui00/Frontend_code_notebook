@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>qwe</p>
+    <script>
+        //可擴展標記語言  Extensible Mark up Language
+        //review axios集成了XML。在实现静态网页时直接使用XML更加轻量化？
+        
+        //1
+        const xml = new XMLHttpRequest();
+        xml.open('get', 'http://hmajax.itheima.net/api/province');
+        xml.addEventListener('loadend',()=>{
+            console.log(xml.response);
+            console.log(JSON.parse(xml.response));
+            console.log(JSON.parse(xml.response).list); 
+            console.log(JSON.parse(xml.response).list.join('<br>')); 
+            document.querySelector('p').innerHTML = JSON.parse(xml.response).list.join('<br>');
+        })
+        xml.send();
+
+
+
+        //2带参数
+        const xml2 = new XMLHttpRequest();
+        xml2.open('get', 'http://hmajax.itheima.net/api/area?pname=广东省&cname=惠州市');
+        xml2.addEventListener('loadend',()=>{
+            // console.log(xml2.response);
+            // console.log(JSON.parse(xml2.response));
+            // console.log(JSON.parse(xml2.response).list); 
+            // console.log(JSON.parse(xml2.response).list.join('<br>')); 
+            document.querySelector('p').innerHTML = JSON.parse(xml2.response).list.join('<br>');
+        })
+        xml2.send();
+    </script>
+</body>
+</html>

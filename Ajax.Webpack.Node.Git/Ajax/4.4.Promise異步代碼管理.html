@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>认识Promise</title>
+</head>
+
+<body>
+  <script>
+    //review Promise 三種狀態，一旦變為fulfilled 或 rejected 就不再改變
+    //Promise被創建， pending 待定狀態
+    //resolve（）被調用，pending => fulfilled 狀態 => then()
+    //rejecet（）被調用， pending => rejected 狀態 => catch()
+
+    
+    const p = new Promise((resolve, reject) => {
+      //在這裡執行異步代碼 eg. setTimeout
+      setTimeout(() => {
+        // resolve('成功')
+        reject(new Error('錯誤'))  //一般error會由一個Error對象裝著 ，reject('錯誤')也ok
+      }, 2000);
+    })
+
+
+    //綁定then和catch的回調函數
+    p.then(resule => {
+      console.log(resule);
+    }).catch(error => {
+      console.log(error);
+    })
+  </script>
+</body>
+
+</html>
