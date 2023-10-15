@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p class="province">province</p>
+    <p class="city">city</p>
+    <p class="area">area</p>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.2.0/axios.min.js"></script>
+
+
+    <script>
+        //review async加在function前面，await加在axios前面。
+        //review 程序會等待被await標記的axios語句執行完才繼續執行下一句。!!!本質上將異步執行改成同步執行
+        //  
+        async function GetData(){
+            try{
+                const pObj = await axios({url: 'http://hmajax.itheima.net/api/province'});
+                const pname = pObj.data.list[18];
+                
+                const cObj = await axios({url: 'http://hmajax.itheima.net/api/city', params:{pname: pname}});
+                const cname = cObj.data.list[10];
+                
+                const aObj = await axios({url: 'http://hmajax.itheima.net/api/area1', params:{pname: pname, cname: cname}});
+                const aname = aObj.data.list[3];
+                
+                
+                document.querySelector(".province").innerHTML = pname;
+                document.querySelector(".city").innerHTML = cname;
+                document.querySelector(".area").innerHTML = aname;
+            }catch(error){
+                console.log(error);
+            }
+        }
+
+        GetData();
+    </script>
+</body>
+
+</html>

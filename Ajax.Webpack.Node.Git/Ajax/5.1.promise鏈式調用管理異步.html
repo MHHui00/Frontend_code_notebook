@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p class="province">province</p>
+    <p class="city">city</p>
+    <p class="area">area</p>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.2.0/axios.min.js"></script>
+
+
+    <script>
+        //review 使用axios嵌套調用：代碼上下依賴高（耦合高），不方便管理。而且無法捕獲到嵌套過程中發生的錯誤
+        //review !!!利用.then（）默認返回一個promise對象的特性。手動將return 改為一個axios請求(axios本身也返回promise對象)。根據這個return的promise對象的執行結果（fulfilled執行then，rejected執行catch）決定繼續then還是錯誤直接catch
+
+        let pname = '';
+        let cname = '';
+        axios({url: 'http://hmajax.itheima.net/api/province'}).then(result=>{
+            // console.log(result.data.list[18]);
+            pname = result.data.list[18];
+            document.querySelector(".province").innerHTML = pname;
+            return axios({url: 'http://hmajax.itheima.net/api/city', params:{pname: pname}})
+        }).then(result=>{
+            // console.log(result.data.list[10]);
+            cname = result.data.list[10];
+            document.querySelector(".city").innerHTML = cname;
+            return axios({url: 'http://hmajax.itheima.net/api/area', params:{pname: pname, cname: cname}})
+        }).then(result=>{
+            // console.log(result.data.list[3]);
+            document.querySelector(".area").innerHTML = result.data.list[3];
+        }).catch(error=>{
+            console.log(error);
+        })
+    </script>
+</body>
+
+</html>
