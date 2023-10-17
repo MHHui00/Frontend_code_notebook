@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 400px;
+            height: 400px;
+            background-color: pink;
+        }
+
+        .head {
+            height: 50px;
+            background-color: skyblue;
+        }
+
+        .content {
+            /* width: 100%; */
+            height: 350px;
+            background-color: lightsalmon;
+        }
+
+        ul li {
+            display: block;
+            width: 50px;
+            height: 50px;
+            text-decoration: none;
+            float: left;
+
+            text-align: center;
+            line-height: 50px;
+
+        }
+
+        .red {
+            background-color: red;
+            height: 350px;
+            display: none;
+        }
+
+        .green {
+            background-color: forestgreen;
+            height: 350px;
+            display: none;
+
+        }
+
+        .gray {
+            background-color: gray;
+            height: 350px;
+            display: none;
+
+        }
+
+        .head .active {
+            font-weight: 700;
+            /* color: white; */
+            /* text-decoration: underline; */
+            background-color: #fff;
+        }
+
+        .content .active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="head">
+            <ul>
+                <li>red</li>
+                <li class="active">green</li>
+                <li>gray</li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="item red"></div>
+            <div class="item gray active"></div>
+            <div class="item green"></div>
+        </div>
+    </div>
+
+    <script>
+        const tab = document.querySelectorAll('.head li')
+        // console.log(tab)
+        //用循环对每个标签做事件绑定
+        for (let i = 0; i < tab.length; i++) {
+            tab[i].addEventListener('mouseenter', function () {
+                //去除存在的active
+                document.querySelector('.head .active').classList.remove('active')
+                //赋予当前的tab active
+                this.classList.add('active')
+
+                //去除存在的active
+                document.querySelector('.content .active').classList.remove('active')
+
+                //赋予当前的tab active。 数组index 0，1，2 对应 1，2，3 。所以i + 1
+                let page = document.querySelector(`.content .item:nth-child(${i + 1})`)
+                page.classList.add('active')
+
+
+            })
+        }
+    </script>
+</body>
+
+</html>

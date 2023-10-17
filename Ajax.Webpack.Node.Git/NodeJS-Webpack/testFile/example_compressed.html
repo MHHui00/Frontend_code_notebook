@@ -1,0 +1,24 @@
+<!DOCTYPE html><html lang="en"><head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>Document</title>    <style>        * {            margin: 0;            padding: 0;        }        h2 {            text-align: center;            margin-top: 50px ;        }        .btn {            overflow: hidden;            width: 400px;            height: 300px;            background-color: wheat;        }        .btn button {            width: 100px;            height: 50px;            margin: 0 40px;        }    </style></head><body>    <div class="btn">        <h2>member</h2>        <button class="start">start</button>        <button class="stop">stop</button>    </div>    <script>        let arr = ['tom', 'mark', 'tim', 'ben', 'ken', 'jame', 'jim']        
+const member = document.querySelector('h2')        
+const start = document.querySelector('.start')        
+const stop = document.querySelector('.stop')                
+let ID = 0        
+let ranNum = 0        
+start.addEventListener('click',function(){            
+    ID = setInterval(function(){                
+        ranNum = parseInt(Math.random()* arr.length )                
+        member.innerHTML = arr[ranNum]            
+    },35)            
+    if (arr.length == 1){                
+        start.disabled = true                
+        stop.disabled = true            
+    }        
+})        
+stop.addEventListener('click', function(){            
+    clearInterval(ID)            
+    arr.splice(ranNum,1)            
+    console.log(arr)        
+})    
+</script>
+</body>
+</html>
