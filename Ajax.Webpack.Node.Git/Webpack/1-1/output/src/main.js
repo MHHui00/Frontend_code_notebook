@@ -1,0 +1,1 @@
+(()=>{var e={492:e=>{e.exports={checkLength:e=>8===e.length}}},r={};function t(o){var n=r[o];if(void 0!==n)return n.exports;var c=r[o]={exports:{}};return e[o](c,c.exports,t),c.exports}(()=>{const{checkLength:e}=t(492);console.log(e("12345678"))})()})();
