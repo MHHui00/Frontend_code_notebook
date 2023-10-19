@@ -2,10 +2,11 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const { sourceMapsEnabled } = require('process');
 
 
 module.exports = {
-    mode: 'development',
+    // mode: 'development',
     //...
     entry: path.join(__dirname, 'src/index.js'),
     output: {
@@ -29,6 +30,7 @@ module.exports = {
                 use: [MiniCssExtractPlugin.loader, "css-loader"],
             },
         ],
+        devtool: 'inline-source-map',
     },
     optimization: {
         minimizer: [
@@ -37,4 +39,10 @@ module.exports = {
             new CssMinimizerPlugin(),
         ],
     },
+    //review 設置別名，保證路徑絕對
+    resolve: {
+        alias: {
+            '@': path.resolve(__dirname, 'src')
+        }
+    }
 };
