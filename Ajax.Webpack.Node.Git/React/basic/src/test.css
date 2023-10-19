@@ -1,0 +1,15 @@
+/* FILEPATH: /Users/mhhui/Code/Frontend/Ajax.Webpack.Node.Git/React/basic/src/test.css */
+.btn {
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    margin: 0 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: gray; /* changed from #0077cc */
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #005fa3;
+}
