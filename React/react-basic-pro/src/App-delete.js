@@ -141,7 +141,7 @@ const App = () => {
                   <div className="user-name">{item.user.uname}</div>
                 </div>
                 <div className="root-reply">
-                  <span className="reply-content">{item.user.content}</span>
+                  <span className="reply-content">{item.content}</span>
                   <div className="reply-info">
                     <span className="reply-time">{item.ctime}</span>
                     <span className="reply-time">点赞数:{item.like}</span>
