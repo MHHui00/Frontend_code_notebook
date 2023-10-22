@@ -65,7 +65,6 @@ const App = () => {
     setCommentList(commentList.filter((item) => item.rpid !== id))
   }
 
-  //review !!渲染navigator元素 + 點擊目標高亮 。 思路：用狀態變量紀錄 點擊事件：拿到點擊目標的標識符，並設為當前狀態（觸發更新組件），（邏輯中斷+模板字符串+js表達式）來切換高亮元素的類名 Genius.
   const [type, setType] = useState('hot');
   const highLightTab = (type) => {
     setType(type)
@@ -124,10 +123,8 @@ const App = () => {
             {tabs.map(item => <span
               key={item.type}
 
-              //review 1. 控制屬性開關也可以用邏輯中斷
               // className={`nav-item ${type === item.type && 'active'}`}
 
-              //review 2. classNameS包。 classNameS()。參數1：靜態的類名字符串， 參數2:一個類，屬性為動態類名，值為js表達式
               className={classNames('nav-item', { active: item.type === type })}
               onClick={() => highLightTab(item.type)}
             >{item.text}</span>)}
@@ -184,7 +181,6 @@ const App = () => {
                     <span className="reply-time">{item.ctime}</span>
                     <span className="reply-time">点赞数:{item.like}</span>
 
-                    {/* review 邏輯中斷. 條件渲染 */}
                     {item.user.uid === user.uid &&
                       <span className="delete-btn" onClick={() => deleteItem(item.rpid)}>删除</span>
                     }
