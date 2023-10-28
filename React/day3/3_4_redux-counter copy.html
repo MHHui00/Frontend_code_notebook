@@ -5,31 +5,30 @@
 <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
 
 <script>
-  //Redux
   // 1. 定义reducer函数 
   // 作用: 根据不同的action对象，返回不同的新的state
   // state: 管理的数据初始状态
   // action: 对象 type 标记当前想要做什么样的修改
-  function reducer (state = { count: 0 }, action){
-    if (action.type === 'increment') {
-      return { count: state.count + 1 }
+  function reducer(state= {count: 0}, action){
+    if(action.type === 'increment'){
+      return {count: state.count+1}
     }
-    if (action.type === 'decrement') {
-      return { count: state.count - 1 }
+    if(action.type === 'decrement'){
+      return {count: state.count-1}
     }
-    return
+    else return
   }
 
 
   // 2. 使用reducer函数生成store实例
-  const store = Redux.createStore(reducer)
+  const store = Redux.createStore(reducer);
 
 
   // 3. 通过store实例的subscribe订阅数据变化
   // 回调函数可以在每次state发生变化的时候自动执行
   store.subscribe(()=>{
-    console.log("changed", store.getState());
-    document.querySelector('span').innerHTML = store.getState().count
+    console.log(store.getState());
+    document.querySelector('span').innerText = store.getState().count
   })
 
 
@@ -37,14 +36,19 @@
   const inBtn = document.getElementById('increment')
   inBtn.addEventListener('click', () => {
     // 增
+    // const count = document.querySelector("span").innerText;
+    // reducer({count:count}, {type:'increase'});
     store.dispatch({
       type: 'increment'
     })
+    
   })
 
   const dBtn = document.getElementById('decrement')
   dBtn.addEventListener('click', () => {
     // 减
+    // const count = document.querySelector("span").innerText;
+    // reducer({count:count}, {type:'decrease'});
     store.dispatch({
       type: 'decrement'
     })
