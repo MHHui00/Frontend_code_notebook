@@ -1,0 +1,10 @@
+/* review antd-mobile 全局css */
+:root:root {
+    --adm-color-primary: #a062d4;
+}
+
+/* 局部 */
+.test {
+    --adm-color-primary: green;
+}
+  

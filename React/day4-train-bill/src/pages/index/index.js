@@ -2,7 +2,7 @@ import { TabBar } from "antd-mobile"
 import { useEffect } from "react"
 import { Outlet, useNavigate } from "react-router-dom"
 import { useDispatch } from 'react-redux'
-import { getBillList } from "@/store/module/billStore"
+import { getBillList } from "@/store/modules/billStore"
 import './index.scss'
 import {
   BillOutline,
@@ -12,7 +12,7 @@ import {
 
 const tabs = [
   {
-    key: '/',
+    key: '/month',
     title: '月度账单',
     icon: <BillOutline />,
   },
@@ -36,20 +36,17 @@ const Layout = () => {
 
   // 切换菜单跳转路由
   const navigate = useNavigate()
-  //這裡的path相當於上面的key
   const swithRoute = (path) => {
     console.log(path)
     navigate(path)
   }
-  
   return (
     <div className="layout">
       <div className="container">
         <Outlet />
       </div>
       <div className="footer">
-        {/* review TabBar 的onChange属性（看文档） */}
-        <TabBar onChange={(key)=>swithRoute(key)}>
+        <TabBar onChange={swithRoute}>
           {tabs.map(item => (
             <TabBar.Item key={item.key} icon={item.icon} title={item.title} />
           ))}
