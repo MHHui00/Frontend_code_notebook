@@ -83,6 +83,90 @@
       "date": "2023-04-03T11:14:56.036Z",
       "useFor": "food",
       "id": 19
+    },
+    {
+      "type": "pay",
+      "value": -10,
+      "date": "2023-10-31T12:36:47.593Z",
+      "useFor": "dessert",
+      "id": 20
+    },
+    {
+      "type": "pay",
+      "value": -10,
+      "date": "2023-10-31T12:37:30.521Z",
+      "useFor": "longdistance",
+      "id": 21
+    },
+    {
+      "type": "pay",
+      "value": -10,
+      "date": "2023-10-31T12:37:53.055Z",
+      "useFor": "travel",
+      "id": 22
+    },
+    {
+      "type": "pay",
+      "value": -10,
+      "date": "2023-10-31T12:38:41.169Z",
+      "useFor": "dessert",
+      "id": 23
+    },
+    {
+      "type": "pay",
+      "value": -10,
+      "date": "2023-10-31T12:39:47.769Z",
+      "useFor": "dessert",
+      "id": 24
+    },
+    {
+      "type": "pay",
+      "value": -10,
+      "date": "2023-10-31T12:40:51.822Z",
+      "useFor": "dessert",
+      "id": 25
+    },
+    {
+      "type": "income",
+      "value": 10,
+      "date": "2023-10-31T12:51:12.403Z",
+      "useFor": "overtimepay",
+      "id": 26
+    },
+    {
+      "type": "pay",
+      "money": -10,
+      "date": "2023-08-31T16:00:00.000Z",
+      "useFor": "dessert",
+      "id": 27
+    },
+    {
+      "type": "pay",
+      "money": -110,
+      "date": "2023-09-01T16:00:00.000Z",
+      "useFor": "longdistance",
+      "id": 28
+    },
+    {
+      "type": "pay",
+      "money": -1110,
+      "date": "2023-09-01T16:00:00.000Z",
+      "useFor": "longdistance",
+      "id": 29
+    },
+    {
+      "type": "income",
+      "money": 50,
+      "date": "2023-10-31T13:53:37.563Z",
+      "useFor": "overtimepay",
+      "id": 30
+    },
+    {
+      "type": "income",
+      "money": 50,
+      "date": "2023-09-02T16:00:00.000Z",
+      "useFor": "bonus",
+      "id": 31
     }
   ]
 }
