@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { getTokenKey } from './token'
 
 //review 封裝axios： 根域名，請求/響應攔截
 const request = axios.create({
@@ -8,6 +9,11 @@ const request = axios.create({
 
 //請求攔截，發送之前做處理
 request.interceptors.request.use((config)=> {
+    //review 拿到本地token；附加token到請求
+    const token = getTokenKey();
+    if (token){
+      config.headers.Authorization = `Bearer ${token}`
+    }
     return config
   }, (error)=> {
     return Promise.reject(error)
