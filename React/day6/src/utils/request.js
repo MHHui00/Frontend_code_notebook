@@ -1,5 +1,7 @@
 import axios from 'axios'
-import { getTokenKey } from './token'
+import { getTokenKey, removeItem } from './token'
+import router from '@/router';
+
 
 //review 封裝axios： 根域名，請求/響應攔截
 const request = axios.create({
@@ -27,6 +29,16 @@ request.interceptors.response.use((response)=> {
   }, (error)=> {
     // 超出 2xx 范围的状态码都会触发该函数。
     // 对响应错误做点什么
+
+    //review 7.5.token失效處理 在攔截處左判斷。 失效時後端統一返回401
+    console.log(error);
+    if(error.response.status === 401){
+      removeItem();
+      router.navigate('/login');
+      //這裡會卡住不會直接跳轉
+      //review 7.5.2 刷新一下來解決
+      window.location.reload();
+    }
     return Promise.reject(error)
 })
 

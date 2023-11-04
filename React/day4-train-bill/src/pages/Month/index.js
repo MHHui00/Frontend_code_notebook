@@ -8,13 +8,13 @@ import _ from 'lodash'
 import DailyBill from './components/DayBill'
 
 const Month = () => {
-  //review 2. dayjs
+  //review 6.2. dayjs
   const [onView, setOnView] = useState(false);
   const [date, setDate] = useState(() => { return dayjs(new Date()).format('YYYY/MM') });
 
 
-  //review 3. ! useMemo：可以理解為條件執行的語句，用於計算/處理一些較複雜的運算，條件依賴變化時，才重新計算，節省資源。
-  //review 3. lodash
+  //review 6.3. ! useMemo：可以理解為條件執行的語句，用於計算/處理一些較複雜的運算，條件依賴變化時，才重新計算，節省資源。
+  //review 6.3. lodash
   const { billList } = useSelector(state => state.bill)
   const sortedDataMonth = useMemo(() => {
     return _.groupBy(billList, (item) => { return dayjs(item.date).format('YYYY/MM') }) //review 巧妙用法
@@ -22,7 +22,7 @@ const Month = () => {
   // console.log(sortedDataMonth);
 
 
-  //review 4. 大量計算，使用useMemo， filter過濾支出還是收入，reduce計算所有結果。返回一個對象，渲染。
+  //review 6.4. 大量計算，使用useMemo， filter過濾支出還是收入，reduce計算所有結果。返回一個對象，渲染。
   const [monthData, setMonthData] = useState([]);
   const monthResult = useMemo(() => {
     const pay = monthData.filter(item => item.type === 'pay').reduce((pre, curr) => pre + curr.money, 0)
@@ -53,7 +53,7 @@ const Month = () => {
     const formatedDate = dayjs(date).format('YYYY/MM')
     setDate(formatedDate)
 
-    //review 4. 之前渲染的已選擇日期 變量 剛好與sortedDataMonth的屬性名符合。將對應的月份數據存到一個狀態變量，觸發更新
+    //review 6.4. 之前渲染的已選擇日期 變量 剛好與sortedDataMonth的屬性名符合。將對應的月份數據存到一個狀態變量，觸發更新
     if (sortedDataMonth[formatedDate]) {
       console.log(11);
       setMonthData(sortedDataMonth[formatedDate])
@@ -114,7 +114,7 @@ const Month = () => {
             max={new Date()}
 
             //
-            //review 1. 看文檔內容配置動作
+            //review 6.1. 看文檔內容配置動作
             onClose={() => setOnView(false)}
             onCancel={() => setOnView(false)}
             onConfirm={confirmEvent}  //邏輯較多，抽離成單獨函數方便管理

@@ -8,6 +8,8 @@ import router from '@/router';
 import { Provider } from 'react-redux';
 import store from './store';
 
+import 'normalize.css'  //初始話css，消除默認設置
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

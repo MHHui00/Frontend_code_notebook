@@ -1,7 +1,7 @@
 import './index.scss'
 import { Card, Form, Input, Button, message } from 'antd'
 import logo from '@/assets/logo.png'
-import { fetchLogin } from '@/store/modules/user' 
+import { fetchLogin} from '@/store/modules/user' 
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
