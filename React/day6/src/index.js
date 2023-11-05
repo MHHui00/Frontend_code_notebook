@@ -12,12 +12,10 @@ import 'normalize.css'  //初始話css，消除默認設置
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
     <Provider store={store}>
       <RouterProvider router={router}>
 
         <App />
       </RouterProvider>
     </Provider>
-  </React.StrictMode>
 );
