@@ -12,7 +12,7 @@ import {
   message
 } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import './index.scss'
 
 import ReactQuill from 'react-quill'
@@ -72,14 +72,36 @@ const Publish = () => {
     setImageType(e.target.value)
   }
 
- 
+  
+  
+  //review 9.5 獲取傳來的id，去fetch info，auto fill table
+  const [params] = useSearchParams()
+  const articleId = params.get('id')
+  // console.log(articleId);
+
+  const [myForm] = Form.useForm();//review 9.5.2 form組件有方法可以快速填充form裡的各項值
+  
+  useEffect(()=>{
+    const getArticleInfo = async()=>{
+      const response = await request({
+        url: `/mp/articles/${articleId}`,
+        method: 'GET'
+      })
+      console.log(response.data);
+      myForm.setFieldValue(response.data)//review 9.5.4 !!setFieldValue!!  自動填充獲取到的info
+      //review stop 不知道為什麼這裡setField沒反應，後面的圖片顯示和提交修改就只看沒做了
+    }
+    articleId && getArticleInfo();  //articleId 存在的時候 才調用自動填充數據
+  }, [articleId, myForm])
+
+  
   return (
     <div className="publish">
       <Card
         title={
           <Breadcrumb items={[
             { title: <Link to={'/'}>首页</Link> },
-            { title: '发布文章' },
+            { title: articleId? '編輯文章':'发布文章' },
           ]}
           />
         }
@@ -87,8 +109,13 @@ const Publish = () => {
         <Form
           labelCol={{ span: 4 }}
           wrapperCol={{ span: 16 }}
-          initialValues={{ type: 0 }} //review 8.3.2 初始化type
+          initialValues={{
+             type: 0,
+            
+            }} //review 8.3.2 初始化type
           onFinish={onFished}
+          //review 9.5.3 綁定
+          form={myForm}
         >
           <Form.Item
             label="标题"
